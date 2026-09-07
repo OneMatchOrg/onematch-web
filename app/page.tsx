@@ -1,15 +1,34 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import CountryCard from "@/components/CountryCard";
 import { countries } from "@/data/countries";
 
 export default function Home() {
   const [search, setSearch] = useState("");
+  const router = useRouter();
 
   const filtered = countries.filter((country) =>
     country.name.toLowerCase().includes(search.toLowerCase())
   );
+
+  const handleSearch = () => {
+    if (!search.trim()) return;
+
+    const match = countries.find(
+      (country) =>
+        country.name.toLowerCase() === search.trim().toLowerCase()
+    );
+
+    if (!match) return;
+
+    if (match.landingPage) {
+      router.push(match.landingPage);
+    } else {
+      window.open(match.registrationUrl, "_blank");
+    }
+  };
 
   return (
     <main className="min-h-screen bg-[#09090B] text-white px-6 py-4">
@@ -44,6 +63,7 @@ export default function Home() {
             placeholder="Search your country..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handleSearch()}
             className="w-full bg-zinc-900/80 backdrop-blur border border-zinc-700 rounded-full px-7 py-4 text-lg text-white placeholder:text-zinc-500 focus:border-red-500 outline-none transition duration-300"
           />
         </div>

@@ -1,38 +1,72 @@
+export type Country = {
+  code: string;
+  name: string;
+  flag: string;
+  registry: string;
 
-export const countries = [
+  landingPage?: string;
+  registrationUrl: string;
+
+  directRegistration: boolean;
+  verified: string;
+  status: "verified" | "review" | "coming-soon";
+};
+
+export const countries: Country[] = [
   {
     code: "PT",
     name: "Portugal",
-    organization: "CEDACE",
-    url: "https://www.ipst.pt/index.php/pt/dador-de-medula",
-    verified: "Verified Today",
+    flag: "🇵🇹",
+    registry: "CEDACE",
+    landingPage: "/pt",
+    registrationUrl:
+      "https://plataforma.dadiva.ipst.pt/donor/marrow/self-assessment",
+    directRegistration: true,
+    verified: "Today",
+    status: "verified",
   },
+
   {
     code: "ES",
     name: "Spain",
-    organization: "REDMO",
-    url: "https://www.fcarreras.org/es/donantes-de-medula",
-    verified: "Verified This Month",
+    flag: "🇪🇸",
+    registry: "REDMO",
+    registrationUrl: "https://www.fcarreras.org/es/donante-de-medula",
+    directRegistration: false,
+    verified: "This Month",
+    status: "verified",
   },
+
   {
     code: "BR",
     name: "Brazil",
-    organization: "REDOME",
-    url: "https://redome.inca.gov.br/",
-    verified: "Verified This Month",
+    flag: "🇧🇷",
+    registry: "REDOME",
+    registrationUrl: "https://redome.inca.gov.br/",
+    directRegistration: false,
+    verified: "This Month",
+    status: "verified",
   },
+
   {
     code: "US",
     name: "United States",
-    organization: "NMDP",
-    url: "https://www.nmdp.org/",
-    verified: "Verified This Month",
+    flag: "🇺🇸",
+    registry: "NMDP",
+    registrationUrl: "https://www.nmdp.org/",
+    directRegistration: false,
+    verified: "This Month",
+    status: "verified",
   },
+
   {
     code: "GB",
     name: "United Kingdom",
-    organization: "Anthony Nolan",
-    url: "https://www.anthonynolan.org/",
-    verified: "Verified This Month",
+    flag: "🇬🇧",
+    registry: "Anthony Nolan",
+    registrationUrl: "https://www.anthonynolan.org/",
+    directRegistration: false,
+    verified: "This Month",
+    status: "verified",
   },
 ];

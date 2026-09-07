@@ -14,11 +14,12 @@ export default function Home() {
   );
 
   const handleSearch = () => {
-    if (!search.trim()) return;
+    const query = search.trim().toLowerCase();
+
+    if (!query) return;
 
     const match = countries.find(
-      (country) =>
-        country.name.toLowerCase() === search.trim().toLowerCase()
+      (country) => country.name.toLowerCase() === query
     );
 
     if (!match) return;
@@ -54,9 +55,15 @@ export default function Home() {
           <p className="mt-2 text-red-500 text-base font-medium">
             One world. One match. One life.
           </p>
+
+          <div className="mt-6 flex justify-center">
+  <span className="rounded-full border border-red-500/40 bg-red-500/10 px-4 py-2 text-sm text-red-300">
+    ❤️ 25 Verified Registries
+  </span>
+</div>
         </div>
 
-        {/* Pesquisa */}
+        {/* Search */}
         <div className="mb-6">
           <input
             type="text"
@@ -68,7 +75,7 @@ export default function Home() {
           />
         </div>
 
-        {/* Países */}
+        {/* Countries */}
         <div className="grid md:grid-cols-2 gap-6">
           {filtered.map((country) => (
             <CountryCard key={country.code} country={country} />

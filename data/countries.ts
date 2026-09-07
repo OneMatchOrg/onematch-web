@@ -59,4 +59,59 @@ export const countries: Country[] = [
     verified: "Today",
     status: "verified",
   },
+
+  {
+  code: "DE",
+  name: "Germany",
+  flag: "🇩🇪",
+  registry: "DKMS Germany",
+  registrationUrl: "https://www.dkms.de/aktiv-werden/spender-werden",
+  directRegistration: true,
+  verified: "2026-09-07",
+  status: "verified",
+  },
+
+{
+  code: "NL",
+  name: "Netherlands",
+  flag: "🇳🇱",
+  registry: "Matchis",
+  registrationUrl: "https://www.matchis.nl/en/become-donor/how-do-i-register-stem-cell-donor",
+  directRegistration: true,
+  verified: "2026-09-07",
+  status: "verified",
+},
+
+{
+  code: "CH",
+  name: "Switzerland",
+  flag: "🇨🇭",
+  registry: "Swiss Blood Stem Cell Registry",
+  registrationUrl: "https://www.blutstammzellspende.ch/de/registrieren/blutstammzellspender-werden",
+  directRegistration: true,
+  verified: "2026-09-07",
+  status: "verified",
+},
+
+{
+  code: "AT",
+  name: "Austria",
+  flag: "🇦🇹",
+  registry: "Geben für Leben",
+  registrationUrl: "https://www.gebenfuerleben.at/werde-jetzt-stammzellspenderin/",
+  directRegistration: true,
+  verified: "2026-09-07",
+  status: "verified",
+},
+
+{
+  code: "BE",
+  name: "Belgium",
+  flag: "🇧🇪",
+  registry: "Marrow Donor Program Belgium",
+  registrationUrl: "https://www.stemcelldonor.be/become-a-donor/registration/",
+  directRegistration: true,
+  verified: "2026-09-07",
+  status: "verified",
+},
 ];

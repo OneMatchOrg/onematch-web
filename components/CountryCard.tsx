@@ -1,51 +1,69 @@
 import Link from "next/link";
 import { Country } from "@/data/countries";
 
-export default function CountryCard({ country }: { country: Country }) {
-  const badgeColor =
-    country.status === "verified"
-      ? "bg-green-900/60 text-green-300"
-      : country.status === "review"
-      ? "bg-yellow-900/60 text-yellow-300"
-      : "bg-zinc-800 text-zinc-300";
+type Props = {
+  country: Country;
+};
 
-  const buttonText = country.directRegistration
-    ? "Start Registration →"
-    : "Official Registry →";
+const registrationInfo = {
+  questionnaire: {
+    icon: "📝",
+    label: "Questionnaire",
+  },
+  kit: {
+    icon: "🧬",
+    label: "Free kit",
+  },
+  "blood-donation": {
+    icon: "🩸",
+    label: "Blood donation",
+  },
+  "pre-registration": {
+    icon: "✅",
+    label: "Pre-registration",
+  },
+};
+
+export default function CountryCard({ country }: Props) {
+  const info = registrationInfo[country.registrationType];
+
+  const href = country.landingPage ?? country.registrationUrl;
 
   return (
-    <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 hover:border-red-500 transition duration-300">
-      <div className="flex justify-between items-start mb-3">
+    <Link
+      href={href}
+      target={country.landingPage ? "_self" : "_blank"}
+      rel={country.landingPage ? undefined : "noopener noreferrer"}
+      className="group block rounded-2xl border border-zinc-800 bg-zinc-900/60 hover:bg-zinc-900 hover:border-red-500 transition-all duration-300 p-6"
+    >
+      <div className="flex items-start justify-between">
         <div>
-          <h3 className="text-2xl font-bold">
-            {country.flag} {country.name}
+          <div className="text-3xl mb-3">{country.flag}</div>
+
+          <h3 className="text-xl font-semibold group-hover:text-red-400 transition-colors">
+            {country.name}
           </h3>
 
-          <p className="text-zinc-400">{country.registry}</p>
+          <p className="text-zinc-400 text-sm mt-1">{country.registry}</p>
         </div>
-
-        <span className={`${badgeColor} text-xs px-3 py-1 rounded-full`}>
-          Verified {country.verified}
-        </span>
       </div>
 
-      {country.landingPage ? (
-        <Link
-          href={country.landingPage}
-          className="inline-block mt-6 bg-red-500 hover:bg-red-600 transition rounded-full px-5 py-3 font-semibold"
-        >
-          {buttonText}
-        </Link>
-      ) : (
-        <a
-          href={country.registrationUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block mt-6 bg-red-500 hover:bg-red-600 transition rounded-full px-5 py-3 font-semibold"
-        >
-          {buttonText}
-        </a>
-      )}
-    </div>
+      <div className="mt-5 inline-flex items-center gap-2 rounded-full bg-zinc-800 px-3 py-1 text-sm text-zinc-200">
+        <span>{info.icon}</span>
+        <span>{info.label}</span>
+        <span className="text-zinc-500">·</span>
+        <span>{country.estimatedTime}</span>
+      </div>
+
+      <div className="mt-5 flex items-center justify-between">
+        <span className="text-red-400 font-medium">
+          Start registration
+        </span>
+
+        <span className="text-zinc-500 group-hover:text-red-400 transition-colors text-xl">
+          →
+        </span>
+      </div>
+    </Link>
   );
 }

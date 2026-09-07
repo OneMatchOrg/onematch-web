@@ -14,6 +14,7 @@ export type Country = {
 };
 
 export const countries: Country[] = [
+  // Portugal
   {
     code: "PT",
     name: "Portugal",
@@ -27,6 +28,7 @@ export const countries: Country[] = [
     status: "verified",
   },
 
+  // Espanha
   {
     code: "ES",
     name: "Spain",
@@ -38,6 +40,7 @@ export const countries: Country[] = [
     status: "verified",
   },
 
+  // França
   {
     code: "FR",
     name: "France",
@@ -49,6 +52,7 @@ export const countries: Country[] = [
     status: "verified",
   },
 
+  // Itália
   {
     code: "IT",
     name: "Italy",
@@ -60,17 +64,19 @@ export const countries: Country[] = [
     status: "verified",
   },
 
+  // Alemanha
   {
     code: "DE",
     name: "Germany",
     flag: "🇩🇪",
-    registry: "DKMS",
+    registry: "DKMS / ZKRD",
     registrationUrl: "https://www.dkms.de/",
     directRegistration: true,
     verified: "Today",
     status: "verified",
   },
 
+  // Reino Unido
   {
     code: "GB",
     name: "United Kingdom",
@@ -82,6 +88,7 @@ export const countries: Country[] = [
     status: "verified",
   },
 
+  // Países Baixos
   {
     code: "NL",
     name: "Netherlands",
@@ -93,6 +100,7 @@ export const countries: Country[] = [
     status: "verified",
   },
 
+  // Bélgica
   {
     code: "BE",
     name: "Belgium",
@@ -104,6 +112,7 @@ export const countries: Country[] = [
     status: "verified",
   },
 
+  // Suíça
   {
     code: "CH",
     name: "Switzerland",
@@ -115,23 +124,85 @@ export const countries: Country[] = [
     status: "verified",
   },
 
+  // Áustria
   {
     code: "AT",
     name: "Austria",
     flag: "🇦🇹",
-    registry: "Austrian Bone Marrow Donor Registry",
+    registry: "Geben für Leben",
     registrationUrl: "https://www.gebenfuerleben.at/",
     directRegistration: true,
     verified: "Today",
     status: "verified",
   },
 
+  // Irlanda
   {
     code: "IE",
     name: "Ireland",
     flag: "🇮🇪",
     registry: "Irish Unrelated Bone Marrow Registry",
     registrationUrl: "https://www.giveblood.ie/",
+    directRegistration: false,
+    verified: "Today",
+    status: "verified",
+  },
+
+  // Dinamarca
+  {
+    code: "DK",
+    name: "Denmark",
+    flag: "🇩🇰",
+    registry: "Danish Stem Cell Donors",
+    registrationUrl: "https://bloddonor.dk/",
+    directRegistration: false,
+    verified: "Today",
+    status: "verified",
+  },
+
+  // Finlândia
+  {
+    code: "FI",
+    name: "Finland",
+    flag: "🇫🇮",
+    registry: "Finnish Stem Cell Registry",
+    registrationUrl: "https://www.veripalvelu.fi/",
+    directRegistration: false,
+    verified: "Today",
+    status: "verified",
+  },
+
+  // Noruega
+  {
+    code: "NO",
+    name: "Norway",
+    flag: "🇳🇴",
+    registry: "Norwegian Bone Marrow Donor Registry",
+    registrationUrl: "https://www.blodbanken-oslo.no/",
+    directRegistration: false,
+    verified: "Today",
+    status: "verified",
+  },
+
+  // Polónia
+  {
+    code: "PL",
+    name: "Poland",
+    flag: "🇵🇱",
+    registry: "DKMS Polska",
+    registrationUrl: "https://www.dkms.pl/",
+    directRegistration: true,
+    verified: "Today",
+    status: "verified",
+  },
+
+  // República Checa
+  {
+    code: "CZ",
+    name: "Czech Republic",
+    flag: "🇨🇿",
+    registry: "Czech National Marrow Donor Registry",
+    registrationUrl: "https://www.kostnidren.cz/",
     directRegistration: false,
     verified: "Today",
     status: "verified",

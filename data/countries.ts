@@ -9,6 +9,7 @@ export type Country = {
 
   directRegistration: boolean;
   verified: string;
+
   status: "verified" | "review" | "coming-soon";
 };
 
@@ -32,30 +33,41 @@ export const countries: Country[] = [
     flag: "🇪🇸",
     registry: "REDMO",
     registrationUrl: "https://www.fcarreras.org/es/donante-de-medula",
-    directRegistration: false,
-    verified: "This Month",
+    directRegistration: true,
+    verified: "Today",
     status: "verified",
   },
 
   {
-    code: "BR",
-    name: "Brazil",
-    flag: "🇧🇷",
-    registry: "REDOME",
-    registrationUrl: "https://redome.inca.gov.br/",
-    directRegistration: false,
-    verified: "This Month",
+    code: "FR",
+    name: "France",
+    flag: "🇫🇷",
+    registry: "France Greffe de Moelle",
+    registrationUrl: "https://www.dondemoelleosseuse.fr/se_preinscrire",
+    directRegistration: true,
+    verified: "Today",
     status: "verified",
   },
 
   {
-    code: "US",
-    name: "United States",
-    flag: "🇺🇸",
-    registry: "NMDP",
-    registrationUrl: "https://www.nmdp.org/",
+    code: "IT",
+    name: "Italy",
+    flag: "🇮🇹",
+    registry: "IBMDR",
+    registrationUrl: "https://ibmdr.galliera.it/",
     directRegistration: false,
-    verified: "This Month",
+    verified: "Today",
+    status: "verified",
+  },
+
+  {
+    code: "DE",
+    name: "Germany",
+    flag: "🇩🇪",
+    registry: "DKMS",
+    registrationUrl: "https://www.dkms.de/",
+    directRegistration: true,
+    verified: "Today",
     status: "verified",
   },
 
@@ -65,8 +77,63 @@ export const countries: Country[] = [
     flag: "🇬🇧",
     registry: "Anthony Nolan",
     registrationUrl: "https://www.anthonynolan.org/",
+    directRegistration: true,
+    verified: "Today",
+    status: "verified",
+  },
+
+  {
+    code: "NL",
+    name: "Netherlands",
+    flag: "🇳🇱",
+    registry: "Matchis",
+    registrationUrl: "https://www.matchis.nl/",
+    directRegistration: true,
+    verified: "Today",
+    status: "verified",
+  },
+
+  {
+    code: "BE",
+    name: "Belgium",
+    flag: "🇧🇪",
+    registry: "Marrow Donor Program Belgium",
+    registrationUrl: "https://www.mdp.be/",
+    directRegistration: true,
+    verified: "Today",
+    status: "verified",
+  },
+
+  {
+    code: "CH",
+    name: "Switzerland",
+    flag: "🇨🇭",
+    registry: "Swiss Blood Stem Cell Registry",
+    registrationUrl: "https://www.blutspende.ch/",
+    directRegistration: true,
+    verified: "Today",
+    status: "verified",
+  },
+
+  {
+    code: "AT",
+    name: "Austria",
+    flag: "🇦🇹",
+    registry: "Austrian Bone Marrow Donor Registry",
+    registrationUrl: "https://www.gebenfuerleben.at/",
+    directRegistration: true,
+    verified: "Today",
+    status: "verified",
+  },
+
+  {
+    code: "IE",
+    name: "Ireland",
+    flag: "🇮🇪",
+    registry: "Irish Unrelated Bone Marrow Registry",
+    registrationUrl: "https://www.giveblood.ie/",
     directRegistration: false,
-    verified: "This Month",
+    verified: "Today",
     status: "verified",
   },
 ];

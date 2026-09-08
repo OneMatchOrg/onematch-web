@@ -85,6 +85,7 @@ export const countries: Country[] = [
     estimatedTime: "2 min",
     verified: "2026-09-07",
     status: "verified",
+    eligibleAge: "18–40 years",
     searchTerms: ["Luxembourg", "Luxemburgo", "Lëtzebuerg"],
   },
 
@@ -196,6 +197,7 @@ export const countries: Country[] = [
     estimatedTime: "Next blood donation",
     verified: "2026-09-07",
     status: "verified",
+    eligibleAge: "18–45 years",
     searchTerms: ["Ireland", "Éire", "Irlanda"],
   },
 
@@ -276,6 +278,7 @@ export const countries: Country[] = [
     estimatedTime: "2 min + free swab kit",
     verified: "2026-09-07",
     status: "verified",
+    eligibleAge: "18–55 years",
     searchTerms: [
       "United States",
       "USA",
@@ -327,6 +330,7 @@ export const countries: Country[] = [
     estimatedTime: "5 min + 2 mL blood sample",
     verified: "2026-09-07",
     status: "verified",
+    eligibleAge: "18–54 years",
     searchTerms: ["Japan", "日本", "Japão"],
   },
 
@@ -356,6 +360,7 @@ export const countries: Country[] = [
     estimatedTime: "Book at collection center",
     verified: "2026-09-07",
     status: "verified",
+    eligibleAge: "18–40 years",
     searchTerms: ["Argentina"],
   },
 
@@ -370,6 +375,7 @@ export const countries: Country[] = [
     estimatedTime: "2 min + home kit",
     verified: "2026-09-07",
     status: "verified",
+    eligibleAge: "18–55 years",
     searchTerms: ["Chile"],
   },
 
@@ -384,6 +390,7 @@ export const countries: Country[] = [
     estimatedTime: "Visit donor centre",
     verified: "2026-09-07",
     status: "verified",
+    eligibleAge: "18–50 years",
     searchTerms: ["Hong Kong", "香港"],
   },
 
@@ -398,6 +405,7 @@ export const countries: Country[] = [
     estimatedTime: "During blood donor registration",
     verified: "2026-09-07",
     status: "verified",
+    eligibleAge: "18–55 years",
     searchTerms: ["Denmark", "Danmark", "Dinamarca"],
   },
 

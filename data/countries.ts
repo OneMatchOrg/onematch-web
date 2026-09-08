@@ -56,7 +56,7 @@ export const countries: Country[] = [
     verified: "2026-09-07",
     status: "verified",
     eligibleAge: "18–40 years",
-    searchTerms: ["Spain", "España", "Espana", "Reino de España"],
+    searchTerms: ["Spain", "España", "Espana", "Reino de España", "Espanha"],
   },
 
   {
@@ -115,6 +115,7 @@ export const countries: Country[] = [
     estimatedTime: "2 min",
     verified: "2026-09-07",
     status: "verified",
+    eligibleAge: "18–35 years",
     searchTerms: ["Netherlands", "Nederland", "Holland", "Países Baixos"],
   },
 
@@ -130,14 +131,9 @@ export const countries: Country[] = [
     estimatedTime: "3 min",
     verified: "2026-09-07",
     status: "verified",
+    eligibleAge: "18–40 years",
     searchTerms: [
-      "Switzerland",
-      "Schweiz",
-      "Suisse",
-      "Suiza",
-      "Svizzera",
-      "Suíça",
-    ],
+      "Switzerland", "Schweiz", "Suisse", "Suiza", "Svizzera", "Suíça"],
   },
 
   {
@@ -152,6 +148,7 @@ export const countries: Country[] = [
     estimatedTime: "2 min + free kit",
     verified: "2026-09-07",
     status: "verified",
+    eligibleAge: "18–35 years",
     searchTerms: ["Austria", "Österreich", "Áustria"],
   },
 
@@ -167,6 +164,7 @@ export const countries: Country[] = [
     estimatedTime: "2 min",
     verified: "2026-09-07",
     status: "verified",
+    eligibleAge: "18–40 years",
     searchTerms: ["Belgium", "België", "Belgique", "Belgien", "Bélgica"],
   },
 
@@ -182,6 +180,7 @@ export const countries: Country[] = [
     estimatedTime: "3 min",
     verified: "2026-09-07",
     status: "verified",
+    eligibleAge: "18–35 years",
     searchTerms: ["Italy", "Italia"],
   },
 
@@ -211,6 +210,7 @@ export const countries: Country[] = [
     estimatedTime: "2 min + free kit",
     verified: "2026-09-07",
     status: "verified",
+    eligibleAge: "18–55 years",
     searchTerms: ["Poland", "Polska", "Polónia"],
   },
 
@@ -225,6 +225,7 @@ export const countries: Country[] = [
     estimatedTime: "3 min + home kit",
     verified: "2026-09-07",
     status: "verified",
+    eligibleAge: "16–35 years",
     searchTerms: ["Sweden", "Sverige", "Suécia"],
   },
 
@@ -239,6 +240,7 @@ export const countries: Country[] = [
     estimatedTime: "3 min",
     verified: "2026-09-07",
     status: "verified",
+    eligibleAge: "18–35 years",
     searchTerms: [
       "Czech Republic",
       "Czechia",
@@ -259,6 +261,7 @@ export const countries: Country[] = [
     estimatedTime: "2 min + free kit",
     verified: "2026-09-07",
     status: "verified",
+    eligibleAge: "17–35 years",
     searchTerms: ["Canada", "Canadá"],
   },
 
@@ -294,6 +297,7 @@ export const countries: Country[] = [
     estimatedTime: "Next blood donation",
     verified: "2026-09-07",
     status: "verified",
+    eligibleAge: "17–35 years",
     searchTerms: ["Australia"],
   },
 
@@ -308,6 +312,7 @@ export const countries: Country[] = [
     estimatedTime: "Book first appointment",
     verified: "2026-09-07",
     status: "verified",
+    eligibleAge: "18–35 years",
     searchTerms: ["New Zealand", "Nova Zelândia", "Aotearoa"],
   },
 
@@ -408,6 +413,7 @@ export const countries: Country[] = [
     estimatedTime: "2 min + home swab kit",
     verified: "2026-09-07",
     status: "verified",
+    eligibleAge: "18–35 years",
     searchTerms: ["Finland", "Suomi", "Finlândia"],
   },
 ];

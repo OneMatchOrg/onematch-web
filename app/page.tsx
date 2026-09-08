@@ -1,25 +1,61 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import CountryCard from "@/components/CountryCard";
 import { countries } from "@/data/countries";
 
+const normalize = (text: string) =>
+  text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+
+const languageMap: Record<string, string> = {
+  "pt-pt": "PT",
+  "pt-br": "BR",
+  pt: "PT",
+  es: "ES",
+  fr: "FR",
+  de: "DE",
+  it: "IT",
+  nl: "NL",
+  ja: "JP",
+  sv: "SE",
+  fi: "FI",
+  da: "DK",
+};
+
 export default function Home() {
   const [search, setSearch] = useState("");
+  const [suggestedCode, setSuggestedCode] = useState<string | null>(null);
   const router = useRouter();
 
-  const filtered = countries.filter((country) =>
-    country.name.toLowerCase().includes(search.toLowerCase())
-  );
+  useEffect(() => {
+    const lang = navigator.language.toLowerCase();
+    const short = lang.split("-")[0];
+
+    setSuggestedCode(languageMap[lang] || languageMap[short] || null);
+  }, []);
+
+  const query = normalize(search.trim());
+
+  const filtered = [...countries]
+    .filter((country) => {
+      const terms = country.searchTerms.map(normalize);
+      return query === "" || terms.some((term) => term.includes(query));
+    })
+    .sort((a, b) => {
+      if (a.code === suggestedCode) return -1;
+      if (b.code === suggestedCode) return 1;
+      return a.name.localeCompare(b.name);
+    });
 
   const handleSearch = () => {
-    const query = search.trim().toLowerCase();
-
     if (!query) return;
 
-    const match = countries.find(
-      (country) => country.name.toLowerCase() === query
+    const match = countries.find((country) =>
+      country.searchTerms.map(normalize).includes(query)
     );
 
     if (!match) return;
@@ -57,10 +93,10 @@ export default function Home() {
           </p>
 
           <div className="mt-6 flex justify-center">
-  <span className="rounded-full border border-red-500/40 bg-red-500/10 px-4 py-2 text-sm text-red-300">
-    ❤️ 25 Verified Registries
-  </span>
-</div>
+            <span className="rounded-full border border-red-500/40 bg-red-500/10 px-4 py-2 text-sm text-red-300">
+              ❤️ {countries.length} Verified Registries
+            </span>
+          </div>
         </div>
 
         {/* Search */}

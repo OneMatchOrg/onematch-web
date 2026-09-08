@@ -1,6 +1,35 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
+import { countries } from "@/data/countries";
 
 export default function PortugalPage() {
+  const [loading, setLoading] = useState(false);
+
+  const portugal = countries.find((c) => c.code === "PT");
+
+  const verifiedLabel = portugal
+    ? new Date(portugal.verified).toLocaleDateString("en-GB", {
+        month: "short",
+        year: "numeric",
+      })
+    : "Verified";
+
+  const handleStart = () => {
+    setLoading(true);
+
+    setTimeout(() => {
+      window.open(
+        "https://plataforma.dadiva.ipst.pt/donor/marrow/self-assessment",
+        "_blank",
+        "noopener,noreferrer"
+      );
+
+      setLoading(false);
+    }, 450);
+  };
+
   return (
     <main className="min-h-screen bg-[#09090B] text-white px-6 py-6">
       <div className="max-w-4xl mx-auto">
@@ -44,7 +73,7 @@ export default function PortugalPage() {
 
           <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
             <p className="text-zinc-400 text-sm">Verified</p>
-            <h3 className="text-xl font-semibold mt-1">Today</h3>
+            <h3 className="text-xl font-semibold mt-1">{verifiedLabel}</h3>
           </div>
         </div>
 
@@ -58,9 +87,12 @@ export default function PortugalPage() {
                 1
               </div>
               <div>
-                <h3 className="font-semibold text-lg">Complete the questionnaire</h3>
+                <h3 className="font-semibold text-lg">
+                  Complete the questionnaire
+                </h3>
                 <p className="text-zinc-400">
-                  Start your official registration through the CEDACE/IPST online questionnaire.
+                  Start your official registration through the CEDACE/IPST online
+                  questionnaire.
                 </p>
               </div>
             </div>
@@ -72,7 +104,8 @@ export default function PortugalPage() {
               <div>
                 <h3 className="font-semibold text-lg">Blood sample</h3>
                 <p className="text-zinc-400">
-                  If you're eligible, a small blood sample is collected for HLA typing.
+                  If you're eligible, a small blood sample is collected for HLA
+                  typing.
                 </p>
               </div>
             </div>
@@ -84,7 +117,8 @@ export default function PortugalPage() {
               <div>
                 <h3 className="font-semibold text-lg">Join the registry</h3>
                 <p className="text-zinc-400">
-                  You'll only be contacted if you're a compatible match for a patient.
+                  You'll only be contacted if you're a compatible match for a
+                  patient.
                 </p>
               </div>
             </div>
@@ -97,11 +131,10 @@ export default function PortugalPage() {
 
           <div className="space-y-5">
             <div>
-              <h3 className="font-semibold">
-                Is donating always surgery?
-              </h3>
+              <h3 className="font-semibold">Is donating always surgery?</h3>
               <p className="text-zinc-400 mt-1">
-                No. Most donations happen through a procedure similar to donating blood.
+                No. Most donations happen through a procedure similar to donating
+                blood.
               </p>
             </div>
 
@@ -110,33 +143,44 @@ export default function PortugalPage() {
                 Will I donate immediately after registering?
               </h3>
               <p className="text-zinc-400 mt-1">
-                No. Registration simply means you'll be contacted if you're a compatible match.
+                No. Registration simply means you'll be contacted if you're a
+                compatible match.
               </p>
             </div>
 
             <div>
-              <h3 className="font-semibold">
-                Is registration free?
-              </h3>
+              <h3 className="font-semibold">Is registration free?</h3>
               <p className="text-zinc-400 mt-1">
-                Yes. Registration through the official CEDACE/IPST process is free.
+                Yes. Registration through the official CEDACE/IPST process is
+                free.
               </p>
             </div>
           </div>
         </section>
 
         {/* Official CTA */}
-        <a
-          href="https://plataforma.dadiva.ipst.pt/donor/marrow/self-assessment"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block w-full text-center bg-red-500 hover:bg-red-600 transition rounded-full py-5 text-xl font-semibold"
-        >
-          Start Official Registration →
-        </a>
+        <div className="relative">
+          <button
+            onClick={handleStart}
+            disabled={loading}
+            className="block w-full text-center bg-red-500 hover:bg-red-600 transition rounded-full py-5 text-xl font-semibold disabled:opacity-100"
+          >
+            Start Official Registration →
+          </button>
+
+          {loading && (
+            <div className="absolute inset-0 rounded-full bg-[#09090B]/95 backdrop-blur flex flex-col items-center justify-center">
+              <div className="animate-pulse text-3xl mb-2">❤️</div>
+              <p className="text-white font-medium text-center">
+                Taking you to Portugal's official registry...
+              </p>
+            </div>
+          )}
+        </div>
 
         <p className="text-center text-zinc-500 text-sm mt-8">
-          Eligibility requirements may change. Always confirm the latest information on the official IPST website.
+          Eligibility requirements may change. Always confirm the latest
+          information on the official IPST website.
         </p>
       </div>
     </main>

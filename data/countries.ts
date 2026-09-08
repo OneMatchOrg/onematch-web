@@ -20,6 +20,10 @@ export type Country = {
   verified: string;
 
   status: "verified" | "review" | "coming-soon";
+
+  eligibleAge?: string;
+
+  searchTerms: string[];
 };
 
 export const countries: Country[] = [
@@ -36,6 +40,8 @@ export const countries: Country[] = [
     estimatedTime: "2 min",
     verified: "2026-09-07",
     status: "verified",
+    eligibleAge: "18–35 years",
+    searchTerms: ["Portugal"],
   },
 
   {
@@ -49,6 +55,8 @@ export const countries: Country[] = [
     estimatedTime: "3 min",
     verified: "2026-09-07",
     status: "verified",
+    eligibleAge: "18–40 years",
+    searchTerms: ["Spain", "España", "Espana", "Reino de España"],
   },
 
   {
@@ -62,6 +70,8 @@ export const countries: Country[] = [
     estimatedTime: "3 min",
     verified: "2026-09-07",
     status: "verified",
+    eligibleAge: "18–35 years",
+    searchTerms: ["France", "França", "France"],
   },
 
   {
@@ -75,6 +85,7 @@ export const countries: Country[] = [
     estimatedTime: "2 min",
     verified: "2026-09-07",
     status: "verified",
+    searchTerms: ["Luxembourg", "Luxemburgo", "Lëtzebuerg"],
   },
 
   {
@@ -88,6 +99,8 @@ export const countries: Country[] = [
     estimatedTime: "2 min + free kit",
     verified: "2026-09-07",
     status: "verified",
+    eligibleAge: "17–55 years",
+    searchTerms: ["Germany", "Deutschland", "Alemanha"],
   },
 
   {
@@ -102,6 +115,7 @@ export const countries: Country[] = [
     estimatedTime: "2 min",
     verified: "2026-09-07",
     status: "verified",
+    searchTerms: ["Netherlands", "Nederland", "Holland", "Países Baixos"],
   },
 
   {
@@ -116,6 +130,14 @@ export const countries: Country[] = [
     estimatedTime: "3 min",
     verified: "2026-09-07",
     status: "verified",
+    searchTerms: [
+      "Switzerland",
+      "Schweiz",
+      "Suisse",
+      "Suiza",
+      "Svizzera",
+      "Suíça",
+    ],
   },
 
   {
@@ -130,6 +152,7 @@ export const countries: Country[] = [
     estimatedTime: "2 min + free kit",
     verified: "2026-09-07",
     status: "verified",
+    searchTerms: ["Austria", "Österreich", "Áustria"],
   },
 
   {
@@ -144,6 +167,7 @@ export const countries: Country[] = [
     estimatedTime: "2 min",
     verified: "2026-09-07",
     status: "verified",
+    searchTerms: ["Belgium", "België", "Belgique", "Belgien", "Bélgica"],
   },
 
   {
@@ -158,6 +182,7 @@ export const countries: Country[] = [
     estimatedTime: "3 min",
     verified: "2026-09-07",
     status: "verified",
+    searchTerms: ["Italy", "Italia"],
   },
 
   {
@@ -172,6 +197,7 @@ export const countries: Country[] = [
     estimatedTime: "Next blood donation",
     verified: "2026-09-07",
     status: "verified",
+    searchTerms: ["Ireland", "Éire", "Irlanda"],
   },
 
   {
@@ -185,6 +211,7 @@ export const countries: Country[] = [
     estimatedTime: "2 min + free kit",
     verified: "2026-09-07",
     status: "verified",
+    searchTerms: ["Poland", "Polska", "Polónia"],
   },
 
   {
@@ -198,6 +225,7 @@ export const countries: Country[] = [
     estimatedTime: "3 min + home kit",
     verified: "2026-09-07",
     status: "verified",
+    searchTerms: ["Sweden", "Sverige", "Suécia"],
   },
 
   {
@@ -211,6 +239,13 @@ export const countries: Country[] = [
     estimatedTime: "3 min",
     verified: "2026-09-07",
     status: "verified",
+    searchTerms: [
+      "Czech Republic",
+      "Czechia",
+      "Česko",
+      "Cesko",
+      "República Checa",
+    ],
   },
 
   {
@@ -224,6 +259,7 @@ export const countries: Country[] = [
     estimatedTime: "2 min + free kit",
     verified: "2026-09-07",
     status: "verified",
+    searchTerms: ["Canada", "Canadá"],
   },
 
   {
@@ -237,6 +273,13 @@ export const countries: Country[] = [
     estimatedTime: "2 min + free swab kit",
     verified: "2026-09-07",
     status: "verified",
+    searchTerms: [
+      "United States",
+      "USA",
+      "US",
+      "America",
+      "Estados Unidos",
+    ],
   },
 
   {
@@ -251,6 +294,7 @@ export const countries: Country[] = [
     estimatedTime: "Next blood donation",
     verified: "2026-09-07",
     status: "verified",
+    searchTerms: ["Australia"],
   },
 
   {
@@ -264,96 +308,106 @@ export const countries: Country[] = [
     estimatedTime: "Book first appointment",
     verified: "2026-09-07",
     status: "verified",
+    searchTerms: ["New Zealand", "Nova Zelândia", "Aotearoa"],
   },
 
   {
-  code: "JP",
-  name: "Japan",
-  flag: "🇯🇵",
-  registry: "Japan Marrow Donor Program",
-  registrationUrl: "https://www.jmdp.or.jp/reg/",
-  directRegistration: true,
-  registrationType: "pre-registration",
-  estimatedTime: "5 min + 2 mL blood sample",
-  verified: "2026-09-07",
-  status: "verified",
-},
+    code: "JP",
+    name: "Japan",
+    flag: "🇯🇵",
+    registry: "Japan Marrow Donor Program",
+    registrationUrl: "https://www.jmdp.or.jp/reg/",
+    directRegistration: true,
+    registrationType: "pre-registration",
+    estimatedTime: "5 min + 2 mL blood sample",
+    verified: "2026-09-07",
+    status: "verified",
+    searchTerms: ["Japan", "日本", "Japão"],
+  },
 
-{
-  code: "BR",
-  name: "Brazil",
-  flag: "🇧🇷",
-  registry: "REDOME",
-  registrationUrl: "https://redome.inca.gov.br/doadores/",
-  directRegistration: true,
-  registrationType: "blood-donation",
-  estimatedTime: "Visit hemocenter",
-  verified: "2026-09-07",
-  status: "verified",
-},
+  {
+    code: "BR",
+    name: "Brazil",
+    flag: "🇧🇷",
+    registry: "REDOME",
+    registrationUrl: "https://redome.inca.gov.br/doadores/",
+    directRegistration: true,
+    registrationType: "blood-donation",
+    estimatedTime: "Visit hemocenter",
+    verified: "2026-09-07",
+    status: "verified",
+    eligibleAge: "18–35 years",
+    searchTerms: ["Brazil", "Brasil"],
+  },
 
-{
-  code: "AR",
-  name: "Argentina",
-  flag: "🇦🇷",
-  registry: "INCUCAI",
-  registrationUrl: "https://sintra.incucai.gov.ar/cph/donante/",
-  directRegistration: true,
-  registrationType: "blood-donation",
-  estimatedTime: "Book at collection center",
-  verified: "2026-09-07",
-  status: "verified",
-},
+  {
+    code: "AR",
+    name: "Argentina",
+    flag: "🇦🇷",
+    registry: "INCUCAI",
+    registrationUrl: "https://sintra.incucai.gov.ar/cph/donante/",
+    directRegistration: true,
+    registrationType: "blood-donation",
+    estimatedTime: "Book at collection center",
+    verified: "2026-09-07",
+    status: "verified",
+    searchTerms: ["Argentina"],
+  },
 
-{
-  code: "CL",
-  name: "Chile",
-  flag: "🇨🇱",
-  registry: "DKMS Chile",
-  registrationUrl: "https://www.dkms.cl/involucrate/conviertete-en-donante",
-  directRegistration: true,
-  registrationType: "kit",
-  estimatedTime: "2 min + home kit",
-  verified: "2026-09-07",
-  status: "verified",
-},
+  {
+    code: "CL",
+    name: "Chile",
+    flag: "🇨🇱",
+    registry: "DKMS Chile",
+    registrationUrl: "https://www.dkms.cl/involucrate/conviertete-en-donante",
+    directRegistration: true,
+    registrationType: "kit",
+    estimatedTime: "2 min + home kit",
+    verified: "2026-09-07",
+    status: "verified",
+    searchTerms: ["Chile"],
+  },
 
-{
-  code: "HK",
-  name: "Hong Kong",
-  flag: "🇭🇰",
-  registry: "Hong Kong Bone Marrow Donor Registry",
-  registrationUrl: "https://www5.ha.org.hk/rcbts/bm-reg?lang=en",
-  directRegistration: true,
-  registrationType: "blood-donation",
-  estimatedTime: "Visit donor centre",
-  verified: "2026-09-07",
-  status: "verified",
-},
+  {
+    code: "HK",
+    name: "Hong Kong",
+    flag: "🇭🇰",
+    registry: "Hong Kong Bone Marrow Donor Registry",
+    registrationUrl: "https://www5.ha.org.hk/rcbts/bm-reg?lang=en",
+    directRegistration: true,
+    registrationType: "blood-donation",
+    estimatedTime: "Visit donor centre",
+    verified: "2026-09-07",
+    status: "verified",
+    searchTerms: ["Hong Kong", "香港"],
+  },
 
-{
-  code: "DK",
-  name: "Denmark",
-  flag: "🇩🇰",
-  registry: "Danish Stem Cell Donor Registry",
-  registrationUrl: "https://bloddonor.dk/stamcelledonor/",
-  directRegistration: true,
-  registrationType: "blood-donation",
-  estimatedTime: "During blood donor registration",
-  verified: "2026-09-07",
-  status: "verified",
-},
+  {
+    code: "DK",
+    name: "Denmark",
+    flag: "🇩🇰",
+    registry: "Danish Stem Cell Donor Registry",
+    registrationUrl: "https://bloddonor.dk/stamcelledonor/",
+    directRegistration: true,
+    registrationType: "blood-donation",
+    estimatedTime: "During blood donor registration",
+    verified: "2026-09-07",
+    status: "verified",
+    searchTerms: ["Denmark", "Danmark", "Dinamarca"],
+  },
 
-{
-  code: "FI",
-  name: "Finland",
-  flag: "🇫🇮",
-  registry: "Finnish Stem Cell Registry",
-  registrationUrl: "https://www.veripalvelu.fi/en/stem-cell-registry/join-the-finnish-stem-cell-registry/",
-  directRegistration: true,
-  registrationType: "kit",
-  estimatedTime: "2 min + home swab kit",
-  verified: "2026-09-07",
-  status: "verified",
-},
+  {
+    code: "FI",
+    name: "Finland",
+    flag: "🇫🇮",
+    registry: "Finnish Stem Cell Registry",
+    registrationUrl:
+      "https://www.veripalvelu.fi/en/stem-cell-registry/join-the-finnish-stem-cell-registry/",
+    directRegistration: true,
+    registrationType: "kit",
+    estimatedTime: "2 min + home swab kit",
+    verified: "2026-09-07",
+    status: "verified",
+    searchTerms: ["Finland", "Suomi", "Finlândia"],
+  },
 ];

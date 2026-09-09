@@ -94,7 +94,7 @@ export default function Home() {
 
           <div className="mt-6 flex justify-center">
             <span className="rounded-full border border-red-500/40 bg-red-500/10 px-4 py-2 text-sm text-red-300">
-              ❤️ {countries.length} Verified Registries
+              ❤️ {countries.length} Verified Countries
             </span>
           </div>
         </div>

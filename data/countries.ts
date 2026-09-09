@@ -245,12 +245,7 @@ export const countries: Country[] = [
     verified: "2026-09-07",
     status: "verified",
     eligibleAge: "18–35 years",
-    searchTerms: [
-      "Czech Republic",
-      "Czechia",
-      "Česko",
-      "Cesko",
-      "República Checa",
+    searchTerms: ["Czech Republic", "Czechia", "Česko", "Cesko", "República Checa",
     ],
   },
 
@@ -802,20 +797,5 @@ export const countries: Country[] = [
   verified: "2026-09-09",
   status: "verified",
   searchTerms: ["India", "भारत", "Bharat"],
-},
-
-{
-  code: "PY",
-  name: "Paraguay",
-  flag: "🇵🇾",
-  registry: "INAT – Registro Nacional de Donantes de CPH",
-  registrationUrl: "https://inat.mspbs.gov.py/?p=10532",
-  directRegistration: true,
-  registrationType: "blood-donation",
-  estimatedTime: "During donor centre visit",
-  eligibleAge: "18–40 years",
-  verified: "2026-09-09",
-  status: "verified",
-  searchTerms: ["Paraguay", "Paraguai"],
 },
 ];

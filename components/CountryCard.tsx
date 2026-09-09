@@ -9,30 +9,38 @@ type Props = {
   country: Country;
 };
 
-const registrationInfo = {
+const registrationTypeInfo = {
   questionnaire: {
     icon: "📝",
-    label: "Questionnaire",
+    label: "Health questionnaire",
   },
   kit: {
-    icon: "🧬",
-    label: "Free kit",
+    icon: "📦",
+    label: "Free home kit",
   },
   "blood-donation": {
     icon: "🩸",
-    label: "Blood donation",
+    label: "Register during blood donation",
   },
   "pre-registration": {
-    icon: "✅",
-    label: "Pre-registration",
+    icon: "➡️",
+    label: "Official pre-registration",
   },
-};
+  online: {
+    icon: "💻",
+    label: "Online registration",
+  },
+  "donor-centre": {
+    icon: "🏥",
+    label: "Visit a donor centre",
+  },
+} as const;
 
 export default function CountryCard({ country }: Props) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const info = registrationInfo[country.registrationType];
+  const info = registrationTypeInfo[country.registrationType];
 
   const handleCardClick = (e: React.MouseEvent) => {
     e.preventDefault();

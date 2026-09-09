@@ -330,6 +330,394 @@ Only information confirmed through official registry sources is included.
 
 ---
 
+## 🇬🇧 United Kingdom
+
+* Registration age: **17–40 years**
+
+* First step: During blood donation
+
+* Official registry: NHS Stem Cell Donor Registry
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇳🇴 Norway
+
+* Registration age: **18–40 years**
+
+* First step: Become a blood donor
+
+* Official registry: Norwegian Bone Marrow Donor Registry
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇮🇸 Iceland
+
+* Registration age: **18–40 years**
+
+* First step: Register during a Blood Bank visit
+
+* Official registry: Iceland Blood Bank
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇪🇪 Estonia
+
+* Registration age: **18–35 years**
+
+* First step: Register at a donor centre
+
+* Official registry: Tartu University Hospital Bone Marrow Donor Register
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇸🇰 Slovakia
+
+* Registration age: **18–35 years**
+
+* First step: Register at an official transfusion centre.
+
+* Official registry: Slovak National Bone Marrow Donor Registry
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇸🇮 Slovenia
+
+* Registration age: **18–40 years**
+
+* First step: Register through an official transfusion centre.
+
+* Official registry: Slovenia-Donor
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇭🇷 Croatia
+
+* Registration age: **18–40 years**
+
+* First step: Register through an official transfusion centre or an Ana Rukavina Foundation registration event.
+
+* Official registry: Croatian Bone Marrow Donor Registry
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇭🇺 Hungary
+
+* Registration age: **18–45 years**
+
+* First step: Donate blood and join the registry within 56 days.
+
+* Official registry: Hungarian Stem Cell Donor Registry
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇨🇾 Cyprus
+
+* Registration age: **18–45 years**
+
+* First step: Complete the official online questionnaire and provide a saliva sample.
+
+* Official registry: Cyprus Bone Marrow Donor Registry
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇷🇴 Romania
+
+* Registration age: **18–45 years**
+
+* First step: Register through an official transfusion centre.
+
+* Official registry: Romanian National Volunteer Registry for Hematopoietic Stem Cell Donors
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇬🇷 Greece
+
+* Registration age: **18–45 years**
+
+* First step: Register through the official Hellenic Bone Marrow Donor Registry.
+
+* Official registry: Hellenic Bone Marrow Donor Registry
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇰🇷 South Korea
+
+* Registration age: **18–39 years**
+
+* First step: Complete the official KMDP registration and provide a blood sample for HLA typing.
+
+* Official registry: Korea Marrow Donor Program
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇹🇼 Taiwan
+
+* Registration age: **18–55 years**
+
+* First step: Book an official registration appointment or attend an official donor recruitment event.
+
+* Official registry: Buddhist Tzu Chi Stem Cells Center
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇸🇬 Singapore
+
+* Registration age: **18–49 years**
+
+* First step: Complete the official online registration and return the cheek swab kit.
+
+* Official registry: Bone Marrow Donor Programme
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇮🇱 Israel
+
+* Registration age: **18–45 years**
+
+* First step: Complete the official health questionnaire and provide a cheek swab sample.
+
+* Official registry: Ezer Mizion Bone Marrow Registry
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇨🇱 Chile
+
+* Registration age: **18–55 years**
+
+* First step: Complete the official online registration and return the cheek swab kit.
+
+* Official registry: DKMS Chile
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇲🇽 Mexico
+
+* Registration age: **18–35 years**
+
+* First step: Register at an official NMDP México registration event or fixed registration point.
+
+* Official registry: NMDP México
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇵🇪 Peru
+
+* Registration age: **18–40 years**
+
+* First step: Contact the official ReD-CPH through MINSA to begin registration.
+
+* Official registry: ReD-CPH (MINSA)
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇺🇾 Uruguay
+
+* Registration age: **18–55 years**
+
+* First step: Start the official online process, attend an interview and complete HLA blood typing.
+
+* Official registry: SINDOME
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇨🇴 Colombia
+
+* Registration age: **18+ years**
+
+* First step: Complete the official registration process and provide a blood or cheek swab sample for HLA typing.
+
+* Official registry: RNDCPH (Instituto Nacional de Salud)
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇹🇭 Thailand
+
+* Registration age: **18–50 years**
+
+* First step: Register on the same day as an official blood donation.
+
+* Official registry: Thai National Stem Cell Donor Registry
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇪🇪 Estonia
+
+* Registration age: **18–35 years**
+
+* First step: Complete the official registration form and provide a blood sample.
+
+* Official registry: Estonian Hematopoietic Stem Cell Donor Registry
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇱🇹 Lithuania
+
+* Registration age: **18+ years**
+
+* First step: Complete the official consent through the government electronic portal.
+
+* Official registry: National Transplant Bureau
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇲🇾 Malaysia
+
+* Registration age: **18–50 years**
+
+* First step: Complete the official online registration or book an official appointment.
+
+* Official registry: Malaysian Stem Cell Registry
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇸🇦 Saudi Arabia
+
+* Registration age: **18–50 years**
+
+* First step: Contact the official Saudi Stem Cell Donor Registry to begin registration.
+
+* Official registry: Saudi Stem Cell Donor Registry
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇪🇨 Ecuador
+
+* Registration age: **18+ years**
+
+* First step: Complete the official registration through INDOT.
+
+* Official registry: INDOT
+
+* Verified: 2026-09-09
+
+* Status: L4
+
+---
+
+## 🇮🇳 India
+
+* Registration age: **18–50 years**
+* First step: Complete the official online registration and return the cheek swab kit.
+* Official registry: DATRI Blood Stem Cell Donors Registry
+* Verified: 2026-09-09
+* Status: L4
+
+## 🇪🇨 Ecuador
+
+* Registration age: **18+ years**
+* First step: Complete the official registration through INDOT.
+* Official registry: INDOT
+* Verified: 2026-09-09
+* Status: L4
+
+## 🇵🇾 Paraguay
+
+* Registration age: **18–40 years**
+* First step: Complete the official consent form and provide a cheek swab sample.
+* Official registry: INAT – Registro Nacional de Donantes de CPH
+* Verified: 2026-09-09
+* Status: L4
+
 
 ## Pending Audit
 

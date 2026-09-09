@@ -6,6 +6,12 @@ The format is inspired by Keep a Changelog and follows Semantic Versioning.
 
 ## [0.1.0] - 2026-09-08
 
+### Verified
+
+* Completed L4 eligibility audit for all 25 official registries.
+* Verified registration age and first registration step for every supported country.
+
+
 ### Added
 
 * 25 verified L3 official donor registries.

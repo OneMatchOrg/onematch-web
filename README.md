@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ❤️ OneMatch
+
+Find your official bone marrow donor registry.
+
+## Product Principle
+
+The primary action must always be the shortest verified path to the official donor registry.
+
+Additional information is optional and must never interrupt the registration flow.
+
+## Milestone
+
+**25 Verified L3 Registries**
+
+One world. One match. One life.
+
+## What is OneMatch?
+
+OneMatch helps people reach their country's **official bone marrow donor registry** in the fewest possible clicks.
+
+Every registry link is manually verified before being published. As countries are audited further (L4), additional verified information such as registration age is added without slowing down the registration flow.
+
+## Verification Levels
+
+| Level  | Meaning                                                                           |
+| ------ | --------------------------------------------------------------------------------- |
+| **L3** | Direct official registration link verified.                                       |
+| **L4** | Link, registration type, estimated time and registration age officially verified. |
 
 ## Getting Started
 
-First, run the development server:
+Run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Roadmap
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* [x] 25 verified direct registry links (L3)
+* [x] Multilingual country search
+* [x] Browser language prioritisation
+* [x] Official registration transition
+* [ ] L4 audit for all countries
+* [ ] Optional verified information pages (ⓘ)
 
-## Learn More
+## Mission
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> One world. One match. One life.

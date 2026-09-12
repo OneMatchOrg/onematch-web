@@ -196,27 +196,25 @@ export default function CountryCard({ country }: Props) {
         <span>{country.estimatedTime}</span>
       </div>
 
-      <div className="mt-5 flex items-center justify-between">
-        {completed ? (
-          <button
-            onClick={handleShare}
-            className="text-red-400 font-medium hover:text-red-300 transition-colors"
-          >
-            <span className="hidden sm:inline">
-              ↗ Share with someone in {country.name}
-            </span>
-            <span className="sm:hidden">↗ Share {country.name}</span>
-          </button>
-        ) : (
-          <span className="text-red-400 font-medium">
-            Start registration
-          </span>
-        )}
+<div className="mt-5 flex gap-3">
+  <button
+    onClick={handleCardClick}
+    className="flex-1 rounded-xl bg-red-600 py-3 font-medium text-white hover:bg-red-500 transition"
+  >
+    ❤️ Register
+  </button>
 
-        <span className="text-zinc-500 group-hover:text-red-400 transition-colors text-xl">
-          →
-        </span>
-      </div>
+  <button
+    onClick={(e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      router.push(`/share/${country.code.toLowerCase()}`);
+    }}
+    className="flex-1 rounded-xl border border-zinc-700 py-3 font-medium text-zinc-200 hover:bg-zinc-800 transition"
+  >
+    📤 Share
+  </button>
+</div>
 
       {copied && (
         <p className="mt-3 text-xs text-green-400">

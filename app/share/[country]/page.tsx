@@ -32,13 +32,13 @@ export async function generateMetadata({
     openGraph: {
       title: `The next match could be found in ${data.name}`,
       description: `Could that match be found in ${data.name}?`,
-      images: [`/share/${data.code.toLowerCase()}/opengraph-image`],
+      images: ["https://onematch.world/share-preview.png"],
     },
     twitter: {
       card: "summary_large_image",
       title: `The next match could be found in ${data.name}`,
       description: `Could that match be found in ${data.name}?`,
-      images: [`/share/${data.code.toLowerCase()}/opengraph-image`],
+      images: ["https://onematch.world/share-preview.png"],
     },
   };
 }

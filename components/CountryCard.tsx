@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { track } from "@vercel/analytics";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Country } from "@/data/countries";
@@ -38,16 +39,46 @@ const registrationTypeInfo = {
 
 export default function CountryCard({ country }: Props) {
   const [loading, setLoading] = useState(false);
+const [completed, setCompleted] = useState(false);
+const [copied, setCopied] = useState(false);
+
+// Mantém o estado "Share" durante a sessão
+useEffect(() => {
+  const completedInSession =
+    sessionStorage.getItem(`completed-${country.code}`) === "true";
+
+  if (completedInSession) {
+    setCompleted(true);
+  }
+}, [country.code]);
+
   const router = useRouter();
 
   const info = registrationTypeInfo[country.registrationType];
 
   const handleCardClick = (e: React.MouseEvent) => {
+  if (completed) {
+    e.preventDefault();
+    return;
+  }
     e.preventDefault();
 
     setLoading(true);
 
     setTimeout(() => {
+const params = new URLSearchParams(window.location.search);
+
+track("official_registry_opened", {
+  country: country.code,
+  registrationType: country.registrationType,
+  source: params.get("utm_source") ?? "direct",
+  campaign: params.get("utm_campaign") ?? "none",
+  medium: params.get("utm_medium") ?? "none",
+});
+
+sessionStorage.setItem("last-country", country.code);
+sessionStorage.setItem("last-country-name", country.name);
+
       if (country.landingPage && country.code === "PT") {
         // Portugal: vai diretamente para o questionário oficial
         window.open(country.registrationUrl, "_blank", "noopener,noreferrer");
@@ -58,20 +89,49 @@ export default function CountryCard({ country }: Props) {
         // Restantes países
         window.open(country.registrationUrl, "_blank", "noopener,noreferrer");
       }
+      sessionStorage.setItem(`completed-${country.code}`, "true");
+setCompleted(true);
 
       setLoading(false);
     }, 450);
   };
 
   const handleInfoClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
+  e.preventDefault();
+  e.stopPropagation();
 
     if (country.landingPage) {
       router.push(country.landingPage);
     }
   };
 
+  const handleShare = async (e: React.MouseEvent) => {
+  e.preventDefault();
+  e.stopPropagation();
+
+  const shareUrl = `https://onematch.world/?country=${country.code}&utm_source=share&utm_medium=social&utm_campaign=${country.code.toLowerCase()}`;
+  if (navigator.share) {
+  track("country_shared", {
+    country: country.code,
+    method: "native",
+  });
+
+  await navigator.share({
+    title: `OneMatch – ${country.name}`,
+    text: `Find ${country.name}'s official bone marrow donor registry.`,
+    url: shareUrl,
+  });
+} else {
+  track("country_shared", {
+    country: country.code,
+    method: "clipboard",
+  });
+
+  await navigator.clipboard.writeText(shareUrl);
+  setCopied(true);
+  setTimeout(() => setCopied(false), 2000);
+}
+};
   return (
     <Link
       href={country.registrationUrl}
@@ -126,14 +186,34 @@ export default function CountryCard({ country }: Props) {
       </div>
 
       <div className="mt-5 flex items-center justify-between">
-        <span className="text-red-400 font-medium">
-          Start registration
-        </span>
+{completed ? (
+  <button
+  onClick={handleShare}
+  className="text-red-400 font-medium hover:text-red-300 transition-colors"
+>
+  <span className="hidden sm:inline">
+    ↗ Share with someone in {country.name}
+  </span>
+  <span className="sm:hidden">
+    ↗ Share {country.name}
+  </span>
+</button>
+) : (
+  <span className="text-red-400 font-medium">
+    Start registration
+  </span>
+)}
 
         <span className="text-zinc-500 group-hover:text-red-400 transition-colors text-xl">
           →
         </span>
       </div>
+      {copied && (
+  <p className="mt-3 text-xs text-green-400">
+    Link copied.
+  </p>
+)}
     </Link>
   );
+  
 }

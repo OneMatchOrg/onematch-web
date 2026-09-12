@@ -109,7 +109,7 @@ setCompleted(true);
   e.preventDefault();
   e.stopPropagation();
 
-  const shareUrl = `https://onematch.world/?country=${country.code}&utm_source=share&utm_medium=social&utm_campaign=${country.code.toLowerCase()}`;
+  const shareUrl = `https://onematch.world/share/${country.code.toLowerCase()}?utm_source=share&utm_medium=social&utm_campaign=${country.code.toLowerCase()}`;
   if (navigator.share) {
   track("country_shared", {
     country: country.code,

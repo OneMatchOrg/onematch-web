@@ -78,7 +78,9 @@ export default function ShareActions({
 
     ctx.textAlign = "center";
 
-// 🇵🇹 Flag emoji (realmente centrado)
+// 🇵🇹 Flag emoji (centrado sem afetar o resto)
+ctx.save();
+
 ctx.font = "180px sans-serif";
 ctx.fillStyle = "#FFFFFF";
 ctx.textAlign = "left";
@@ -86,6 +88,12 @@ ctx.textBaseline = "middle";
 
 const flagWidth = ctx.measureText(flag).width;
 ctx.fillText(flag, 540 - flagWidth / 2, 520);
+
+ctx.restore();
+
+// IMPORTANTE: voltar ao alinhamento normal
+ctx.textAlign = "center";
+ctx.textBaseline = "alphabetic";
 
     // MAIN MESSAGE
     ctx.fillStyle = "#FFFFFF";

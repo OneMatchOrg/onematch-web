@@ -8,7 +8,7 @@ export const size = {
 
 export const contentType = "image/png";
 
-export default async function OGImage({
+export default async function Image({
   params,
 }: {
   params: Promise<{ country: string }>;
@@ -18,28 +18,6 @@ export default async function OGImage({
   const data = countries.find(
     (c) => c.code.toLowerCase() === country.toLowerCase()
   );
-
-  if (!data) {
-    return new ImageResponse(
-      (
-        <div
-          style={{
-            background: "#09090B",
-            color: "white",
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            fontSize: 60,
-          }}
-        >
-          OneMatch
-        </div>
-      ),
-      size
-    );
-  }
 
   return new ImageResponse(
     (
@@ -53,39 +31,46 @@ export default async function OGImage({
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          padding: 70,
           textAlign: "center",
+          padding: 70,
         }}
       >
-        <img
-          src="https://onematch.world/logo-v1.png"
-          width={220}
-          height={220}
-          alt="OneMatch"
-        />
-
-        <div style={{ fontSize: 90, marginTop: 30 }}>
-          {data.flag}
+        <div
+          style={{
+            fontSize: 170,
+            marginBottom: 20,
+          }}
+        >
+          {data?.flag ?? "❤️"}
         </div>
 
         <div
           style={{
-            fontSize: 62,
+            fontSize: 68,
             fontWeight: 700,
-            marginTop: 25,
             lineHeight: 1.15,
           }}
         >
           The next match
-          <br />
-          could be found in {data.name}.
+          {"\n"}
+          could be found in {data?.name ?? "your country"}.
         </div>
 
         <div
           style={{
-            fontSize: 30,
+            fontSize: 34,
             color: "#D4D4D8",
             marginTop: 35,
+          }}
+        >
+          OneMatch
+        </div>
+
+        <div
+          style={{
+            fontSize: 24,
+            color: "#71717A",
+            marginTop: 12,
           }}
         >
           One world. One match. One life.

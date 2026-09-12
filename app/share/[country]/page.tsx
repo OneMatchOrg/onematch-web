@@ -7,6 +7,42 @@ export function generateStaticParams() {
   }));
 }
 
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ country: string }>;
+}): Promise<Metadata> {
+  const { country } = await params;
+
+  const data = countries.find(
+    (c) => c.code.toLowerCase() === country.toLowerCase()
+  );
+
+  if (!data) {
+    return {
+      title: "OneMatch",
+    };
+  }
+
+  return {
+    title: `The next match could be found in ${data.name}`,
+    description: `Could that match be found in ${data.name}? Join the official registry.`,
+    openGraph: {
+      title: `The next match could be found in ${data.name}`,
+      description: `Could that match be found in ${data.name}?`,
+      images: [`/share/${data.code.toLowerCase()}/opengraph-image`],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `The next match could be found in ${data.name}`,
+      description: `Could that match be found in ${data.name}?`,
+      images: [`/share/${data.code.toLowerCase()}/opengraph-image`],
+    },
+  };
+}
+
 type Props = {
   params: Promise<{
     country: string;

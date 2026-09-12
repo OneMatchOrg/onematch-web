@@ -78,35 +78,10 @@ export default function ShareActions({
 
     ctx.textAlign = "center";
 
-// Flag image (works on iPhone canvas)
-const flagImg = new Image();
-flagImg.crossOrigin = "anonymous";
-flagImg.src = `https://flagcdn.com/w320/${countryCode.toLowerCase()}.png`;
-
-await new Promise<void>((resolve, reject) => {
-  flagImg.onload = () => resolve();
-  flagImg.onerror = () => reject();
-});
-
-const flagWidth = 220;
-const flagHeight = Math.round(flagWidth * 3 / 4); // proporção 4:3
-
-ctx.save();
-
-// Sombra suave
-ctx.shadowColor = "rgba(0,0,0,0.35)";
-ctx.shadowBlur = 20;
-
-// Desenha centrada
-ctx.drawImage(
-  flagImg,
-  (1080 - flagWidth) / 2,
-  430,
-  flagWidth,
-  flagHeight
-);
-
-ctx.restore();
+    // 🇵🇹 Flag emoji (centered)
+    ctx.font = "180px sans-serif";
+    ctx.fillStyle = "#FFFFFF";
+    ctx.fillText(flag, 540, 520);
 
     // MAIN MESSAGE
     ctx.fillStyle = "#FFFFFF";
@@ -130,7 +105,7 @@ ctx.restore();
     ctx.font = "700 42px Arial";
     ctx.fillText("Help us find them.", 540, 1318);
 
-    // Link (large and centred)
+    // Link
     ctx.fillStyle = "#FFFFFF";
     ctx.font = "700 42px Arial";
     ctx.fillText(
@@ -139,7 +114,7 @@ ctx.restore();
       1700
     );
 
-    // Trust text
+    // Trust
     ctx.fillStyle = "#71717A";
     ctx.font = "28px Arial";
     ctx.fillText("Official registry • OneMatch", 540, 1755);

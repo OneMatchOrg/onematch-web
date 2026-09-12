@@ -48,12 +48,12 @@ export default function ShareActions({
     ctx.fillStyle = "#09090B";
     ctx.fillRect(0, 0, 1080, 1920);
 
-    // Soft red glow
-    const gradient = ctx.createRadialGradient(540, 220, 40, 540, 220, 300);
-    gradient.addColorStop(0, "rgba(220,38,38,0.35)");
-    gradient.addColorStop(1, "rgba(220,38,38,0)");
+    // Red glow behind the logo
+    const glow = ctx.createRadialGradient(540, 170, 60, 540, 170, 340);
+    glow.addColorStop(0, "rgba(220,38,38,0.35)");
+    glow.addColorStop(1, "rgba(220,38,38,0)");
 
-    ctx.fillStyle = gradient;
+    ctx.fillStyle = glow;
     ctx.fillRect(0, 0, 1080, 500);
 
     // Logo
@@ -68,38 +68,58 @@ export default function ShareActions({
     const logoWidth = 340;
     const logoHeight = (logo.height / logo.width) * logoWidth;
 
-    ctx.drawImage(logo, (1080 - logoWidth) / 2, 120, logoWidth, logoHeight);
+    ctx.drawImage(
+      logo,
+      (1080 - logoWidth) / 2,
+      80,
+      logoWidth,
+      logoHeight
+    );
 
-    ctx.fillStyle = "#FFFFFF";
     ctx.textAlign = "center";
 
-    ctx.font = "700 74px Arial";
-    ctx.fillText("OneMatch", 540, 390);
+    // Flag (properly centred)
+    ctx.save();
+    ctx.translate(540, 520);
+    ctx.font = "180px Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji";
+    ctx.fillText(flag, 0, 0);
+    ctx.restore();
 
-    ctx.font = "180px Arial";
-    ctx.fillText(flag, 540, 620);
+    // MAIN MESSAGE
+    ctx.fillStyle = "#FFFFFF";
+    ctx.font = "700 82px Arial";
+    ctx.fillText("Someone is waiting", 540, 700);
+    ctx.fillText("for a compatible", 540, 800);
+    ctx.fillText("bone marrow donor.", 540, 900);
 
-    ctx.font = "700 68px Arial";
-    ctx.fillText("The next match", 540, 840);
-    ctx.fillText("could be found", 540, 920);
-    ctx.fillText(`in ${countryName}.`, 540, 1000);
+    // Secondary message
+    ctx.fillStyle = "#A1A1AA";
+    ctx.font = "40px Arial";
+    ctx.fillText("The next match could be found", 540, 1050);
+    ctx.fillText(`in ${countryName}.`, 540, 1110);
 
-    ctx.fillStyle = "#D4D4D8";
-    ctx.font = "42px Arial";
-    ctx.fillText("Someone is waiting for a compatible", 540, 1180);
-    ctx.fillText("bone marrow donor.", 540, 1240);
-
+    // CTA
     ctx.fillStyle = "#DC2626";
-    roundRect(ctx, 180, 1440, 720, 92, 24);
+    roundRect(ctx, 190, 1260, 700, 92, 26);
     ctx.fill();
 
     ctx.fillStyle = "#FFFFFF";
-    ctx.font = "700 40px Arial";
-    ctx.fillText("Could that match be found here?", 540, 1498);
+    ctx.font = "700 42px Arial";
+    ctx.fillText("Help us find them.", 540, 1318);
 
+    // Link (large and centred)
+    ctx.fillStyle = "#FFFFFF";
+    ctx.font = "700 42px Arial";
+    ctx.fillText(
+      `onematch.world/share/${countryCode.toLowerCase()}`,
+      540,
+      1700
+    );
+
+    // Trust text
     ctx.fillStyle = "#71717A";
-    ctx.font = "34px Arial";
-    ctx.fillText("onematch.world", 540, 1760);
+    ctx.font = "28px Arial";
+    ctx.fillText("Official registry • OneMatch", 540, 1755);
 
     const blob = await new Promise<Blob | null>((resolve) =>
       canvas.toBlob(resolve, "image/png")
@@ -131,11 +151,34 @@ export default function ShareActions({
     }
   };
 
+  const handleShare = async () => {
+    track("country_shared", {
+      country: countryCode,
+      method: "native",
+    });
+
+    await navigator.share?.({
+      title: "OneMatch",
+      text: "Someone is waiting for a compatible bone marrow donor.",
+      url: shareUrl,
+    });
+  };
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(shareUrl);
+
+    track("country_shared", {
+      country: countryCode,
+      method: "clipboard",
+    });
+  };
+
   return (
     <div className="mt-8 grid grid-cols-2 gap-3">
+      {/* Instagram */}
       <button
         onClick={handleInstagramStory}
-        className="rounded-2xl border border-pink-500/30 bg-gradient-to-br from-pink-500/20 via-red-500/10 to-orange-500/20 p-4 hover:border-pink-500 transition hover:scale-[1.02]"
+        className="rounded-2xl border border-pink-500/30 bg-gradient-to-br from-pink-500/20 via-red-500/10 to-orange-500/20 p-4 transition hover:border-pink-500 hover:scale-[1.02]"
       >
         <div className="text-3xl">📸</div>
         <div className="mt-2 text-sm font-semibold text-white">
@@ -143,11 +186,12 @@ export default function ShareActions({
         </div>
       </button>
 
+      {/* WhatsApp */}
       <a
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="rounded-2xl border border-green-500/30 bg-green-500/10 p-4 text-center hover:border-green-500 transition hover:scale-[1.02]"
+        className="rounded-2xl border border-green-500/30 bg-green-500/10 p-4 text-center transition hover:border-green-500 hover:bg-green-500/20 hover:scale-[1.02]"
       >
         <div className="text-3xl">💬</div>
         <div className="mt-2 text-sm font-semibold text-white">
@@ -155,15 +199,10 @@ export default function ShareActions({
         </div>
       </a>
 
+      {/* Native Share */}
       <button
-        onClick={() =>
-          navigator.share?.({
-            title: "OneMatch",
-            text: `The next match could be found in ${countryName}.`,
-            url: shareUrl,
-          })
-        }
-        className="rounded-2xl border border-blue-500/30 bg-blue-500/10 p-4 hover:border-blue-500 transition hover:scale-[1.02]"
+        onClick={handleShare}
+        className="rounded-2xl border border-blue-500/30 bg-blue-500/10 p-4 transition hover:border-blue-500 hover:bg-blue-500/20 hover:scale-[1.02]"
       >
         <div className="text-3xl">📨</div>
         <div className="mt-2 text-sm font-semibold text-white">
@@ -171,9 +210,10 @@ export default function ShareActions({
         </div>
       </button>
 
+      {/* Copy Link */}
       <button
-        onClick={() => navigator.clipboard.writeText(shareUrl)}
-        className="rounded-2xl border border-zinc-600 bg-zinc-800 p-4 hover:bg-zinc-700 transition hover:scale-[1.02]"
+        onClick={handleCopy}
+        className="rounded-2xl border border-zinc-600 bg-zinc-800 p-4 transition hover:bg-zinc-700 hover:scale-[1.02]"
       >
         <div className="text-3xl">🔗</div>
         <div className="mt-2 text-sm font-semibold text-white">

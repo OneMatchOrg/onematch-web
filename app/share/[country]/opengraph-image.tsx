@@ -1,6 +1,8 @@
 import { ImageResponse } from "next/og";
 import { countries } from "@/data/countries";
 
+export const runtime = "edge";
+
 export const size = {
   width: 1200,
   height: 630,
@@ -24,56 +26,40 @@ export default async function Image({
       <div
         style={{
           background: "#09090B",
-          color: "white",
           width: "100%",
           height: "100%",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
+          color: "white",
           textAlign: "center",
-          padding: 70,
+          padding: 80,
         }}
       >
-        <div
-          style={{
-            fontSize: 170,
-            marginBottom: 20,
-          }}
-        >
-          {data?.flag ?? "❤️"}
-        </div>
+        <div style={{ fontSize: 140 }}>{data?.flag ?? "❤️"}</div>
 
         <div
           style={{
-            fontSize: 68,
+            fontSize: 64,
             fontWeight: 700,
             lineHeight: 1.15,
+            marginTop: 30,
           }}
         >
           The next match
-          {"\n"}
+          <br />
           could be found in {data?.name ?? "your country"}.
         </div>
 
         <div
           style={{
             fontSize: 34,
-            color: "#D4D4D8",
-            marginTop: 35,
+            color: "#A1A1AA",
+            marginTop: 40,
           }}
         >
           OneMatch
-        </div>
-
-        <div
-          style={{
-            fontSize: 24,
-            color: "#71717A",
-            marginTop: 12,
-          }}
-        >
-          One world. One match. One life.
         </div>
       </div>
     ),

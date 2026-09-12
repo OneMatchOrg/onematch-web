@@ -39,66 +39,76 @@ const registrationTypeInfo = {
 
 export default function CountryCard({ country }: Props) {
   const [loading, setLoading] = useState(false);
-const [completed, setCompleted] = useState(false);
-const [copied, setCopied] = useState(false);
-
-// Mantém o estado "Share" durante a sessão
-useEffect(() => {
-  const completedInSession =
-    sessionStorage.getItem(`completed-${country.code}`) === "true";
-
-  if (completedInSession) {
-    setCompleted(true);
-  }
-}, [country.code]);
+  const [completed, setCompleted] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const router = useRouter();
+
+  useEffect(() => {
+    const completedInSession =
+      sessionStorage.getItem(`completed-${country.code}`) === "true";
+
+    if (completedInSession) {
+      setCompleted(true);
+    }
+  }, [country.code]);
 
   const info = registrationTypeInfo[country.registrationType];
 
   const handleCardClick = (e: React.MouseEvent) => {
-  if (completed) {
-    e.preventDefault();
-    return;
-  }
-    e.preventDefault();
+    if (completed) {
+      e.preventDefault();
+      return;
+    }
 
+    e.preventDefault();
     setLoading(true);
 
     setTimeout(() => {
-const params = new URLSearchParams(window.location.search);
+      const params = new URLSearchParams(window.location.search);
 
-track("official_registry_opened", {
-  country: country.code,
-  registrationType: country.registrationType,
-  source: params.get("utm_source") ?? "direct",
-  campaign: params.get("utm_campaign") ?? "none",
-  medium: params.get("utm_medium") ?? "none",
-});
+      track("official_registry_opened", {
+        country: country.code,
+        registrationType: country.registrationType,
+        source: params.get("utm_source") ?? "direct",
+        campaign: params.get("utm_campaign") ?? "none",
+        medium: params.get("utm_medium") ?? "none",
+      });
 
-sessionStorage.setItem("last-country", country.code);
-sessionStorage.setItem("last-country-name", country.name);
+      sessionStorage.setItem("last-country", country.code);
+      sessionStorage.setItem("last-country-name", country.name);
+      sessionStorage.setItem(`completed-${country.code}`, "true");
+
+      setCompleted(true);
+      setLoading(false);
+
+      const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+
+      const openRegistry = () => {
+        if (isIOS) {
+          window.location.href = country.registrationUrl;
+        } else {
+          window.open(
+            country.registrationUrl,
+            "_blank",
+            "noopener,noreferrer"
+          );
+        }
+      };
 
       if (country.landingPage && country.code === "PT") {
-        // Portugal: vai diretamente para o questionário oficial
-        window.open(country.registrationUrl, "_blank", "noopener,noreferrer");
+        openRegistry();
       } else if (country.landingPage) {
-        // Futuros países com landing
         router.push(country.landingPage);
       } else {
-        // Restantes países
-        window.open(country.registrationUrl, "_blank", "noopener,noreferrer");
+        openRegistry();
       }
-      sessionStorage.setItem(`completed-${country.code}`, "true");
-setCompleted(true);
-
-      setLoading(false);
     }, 450);
   };
 
   const handleInfoClick = (e: React.MouseEvent) => {
-  e.preventDefault();
-  e.stopPropagation();
+    e.preventDefault();
+    e.stopPropagation();
 
     if (country.landingPage) {
       router.push(country.landingPage);
@@ -106,32 +116,34 @@ setCompleted(true);
   };
 
   const handleShare = async (e: React.MouseEvent) => {
-  e.preventDefault();
-  e.stopPropagation();
+    e.preventDefault();
+    e.stopPropagation();
 
-  const shareUrl = `https://onematch.world/share/${country.code.toLowerCase()}?utm_source=share&utm_medium=social&utm_campaign=${country.code.toLowerCase()}`;
-  if (navigator.share) {
-  track("country_shared", {
-    country: country.code,
-    method: "native",
-  });
+    const shareUrl = `https://onematch.world/share/${country.code.toLowerCase()}`;
 
-  await navigator.share({
-    title: `OneMatch – ${country.name}`,
-    text: `Find ${country.name}'s official bone marrow donor registry.`,
-    url: shareUrl,
-  });
-} else {
-  track("country_shared", {
-    country: country.code,
-    method: "clipboard",
-  });
+    if (navigator.share) {
+      track("country_shared", {
+        country: country.code,
+        method: "native",
+      });
 
-  await navigator.clipboard.writeText(shareUrl);
-  setCopied(true);
-  setTimeout(() => setCopied(false), 2000);
-}
-};
+      await navigator.share({
+        title: `OneMatch – ${country.name}`,
+        text: "Someone is waiting for a compatible bone marrow donor.",
+        url: shareUrl,
+      });
+    } else {
+      track("country_shared", {
+        country: country.code,
+        method: "clipboard",
+      });
+
+      await navigator.clipboard.writeText(shareUrl);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
   return (
     <Link
       href={country.registrationUrl}
@@ -147,7 +159,6 @@ setCompleted(true);
         </div>
       )}
 
-      {/* Info button (Portugal por agora) */}
       {country.landingPage && (
         <button
           onClick={handleInfoClick}
@@ -186,34 +197,32 @@ setCompleted(true);
       </div>
 
       <div className="mt-5 flex items-center justify-between">
-{completed ? (
-  <button
-  onClick={handleShare}
-  className="text-red-400 font-medium hover:text-red-300 transition-colors"
->
-  <span className="hidden sm:inline">
-    ↗ Share with someone in {country.name}
-  </span>
-  <span className="sm:hidden">
-    ↗ Share {country.name}
-  </span>
-</button>
-) : (
-  <span className="text-red-400 font-medium">
-    Start registration
-  </span>
-)}
+        {completed ? (
+          <button
+            onClick={handleShare}
+            className="text-red-400 font-medium hover:text-red-300 transition-colors"
+          >
+            <span className="hidden sm:inline">
+              ↗ Share with someone in {country.name}
+            </span>
+            <span className="sm:hidden">↗ Share {country.name}</span>
+          </button>
+        ) : (
+          <span className="text-red-400 font-medium">
+            Start registration
+          </span>
+        )}
 
         <span className="text-zinc-500 group-hover:text-red-400 transition-colors text-xl">
           →
         </span>
       </div>
+
       {copied && (
-  <p className="mt-3 text-xs text-green-400">
-    Link copied.
-  </p>
-)}
+        <p className="mt-3 text-xs text-green-400">
+          Link copied.
+        </p>
+      )}
     </Link>
   );
-  
 }

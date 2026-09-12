@@ -1,6 +1,12 @@
 "use client";
 
 import { track } from "@vercel/analytics";
+import {
+  FaInstagram,
+  FaWhatsapp,
+  FaShareNodes,
+  FaLink,
+} from "react-icons/fa6";
 
 type Props = {
   countryName: string;
@@ -190,7 +196,9 @@ ctx.textBaseline = "alphabetic";
         onClick={handleInstagramStory}
         className="rounded-2xl border border-pink-500/30 bg-gradient-to-br from-pink-500/20 via-red-500/10 to-orange-500/20 p-4 transition hover:border-pink-500 hover:scale-[1.02]"
       >
-        <div className="text-3xl">📸</div>
+<div className="flex justify-center">
+  <FaInstagram className="h-8 w-8 text-white" />
+</div>
         <div className="mt-2 text-sm font-semibold text-white">
           Instagram Story
         </div>
@@ -203,7 +211,9 @@ ctx.textBaseline = "alphabetic";
         rel="noopener noreferrer"
         className="rounded-2xl border border-green-500/30 bg-green-500/10 p-4 text-center transition hover:border-green-500 hover:bg-green-500/20 hover:scale-[1.02]"
       >
-        <div className="text-3xl">💬</div>
+<div className="flex justify-center">
+  <FaWhatsapp className="h-8 w-8 text-[#25D366]" />
+</div>
         <div className="mt-2 text-sm font-semibold text-white">
           WhatsApp
         </div>
@@ -214,7 +224,9 @@ ctx.textBaseline = "alphabetic";
         onClick={handleShare}
         className="rounded-2xl border border-blue-500/30 bg-blue-500/10 p-4 transition hover:border-blue-500 hover:bg-blue-500/20 hover:scale-[1.02]"
       >
-        <div className="text-3xl">📨</div>
+<div className="flex justify-center">
+  <FaShareNodes className="h-8 w-8 text-[#60A5FA]" />
+</div>
         <div className="mt-2 text-sm font-semibold text-white">
           Share
         </div>
@@ -225,7 +237,9 @@ ctx.textBaseline = "alphabetic";
         onClick={handleCopy}
         className="rounded-2xl border border-zinc-600 bg-zinc-800 p-4 transition hover:bg-zinc-700 hover:scale-[1.02]"
       >
-        <div className="text-3xl">🔗</div>
+<div className="flex justify-center">
+  <FaLink className="h-8 w-8 text-zinc-300" />
+</div>
         <div className="mt-2 text-sm font-semibold text-white">
           Copy Link
         </div>

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { countries } from "@/data/countries";
 
@@ -7,13 +8,15 @@ export function generateStaticParams() {
   }));
 }
 
-import type { Metadata } from "next";
+type Props = {
+  params: Promise<{
+    country: string;
+  }>;
+};
 
 export async function generateMetadata({
   params,
-}: {
-  params: Promise<{ country: string }>;
-}): Promise<Metadata> {
+}: Props): Promise<Metadata> {
   const { country } = await params;
 
   const data = countries.find(
@@ -23,31 +26,27 @@ export async function generateMetadata({
   if (!data) {
     return {
       title: "OneMatch",
+      description: "Someone is waiting for a compatible bone marrow donor.",
     };
   }
 
   return {
+    metadataBase: new URL("https://onematch.world"),
     title: `The next match could be found in ${data.name}`,
-    description: `Could that match be found in ${data.name}? Join the official registry.`,
+    description: "Someone is waiting for a compatible bone marrow donor.",
     openGraph: {
       title: `The next match could be found in ${data.name}`,
-      description: `Could that match be found in ${data.name}?`,
-      images: ["https://onematch.world/share-preview.png"],
+      description: "Someone is waiting for a compatible bone marrow donor.",
+      images: ["/share-preview.png"],
     },
     twitter: {
       card: "summary_large_image",
       title: `The next match could be found in ${data.name}`,
-      description: `Could that match be found in ${data.name}?`,
-      images: ["https://onematch.world/share-preview.png"],
+      description: "Someone is waiting for a compatible bone marrow donor.",
+      images: ["/share-preview.png"],
     },
   };
 }
-
-type Props = {
-  params: Promise<{
-    country: string;
-  }>;
-};
 
 export default async function SharePage({ params }: Props) {
   const { country } = await params;

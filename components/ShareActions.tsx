@@ -78,12 +78,35 @@ export default function ShareActions({
 
     ctx.textAlign = "center";
 
-    // Flag (properly centred)
-    ctx.save();
-    ctx.translate(540, 520);
-    ctx.font = "180px Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji";
-    ctx.fillText(flag, 0, 0);
-    ctx.restore();
+// Flag image (works on iPhone canvas)
+const flagImg = new Image();
+flagImg.crossOrigin = "anonymous";
+flagImg.src = `https://flagcdn.com/w320/${countryCode.toLowerCase()}.png`;
+
+await new Promise<void>((resolve, reject) => {
+  flagImg.onload = () => resolve();
+  flagImg.onerror = () => reject();
+});
+
+const flagWidth = 220;
+const flagHeight = Math.round(flagWidth * 3 / 4); // proporção 4:3
+
+ctx.save();
+
+// Sombra suave
+ctx.shadowColor = "rgba(0,0,0,0.35)";
+ctx.shadowBlur = 20;
+
+// Desenha centrada
+ctx.drawImage(
+  flagImg,
+  (1080 - flagWidth) / 2,
+  430,
+  flagWidth,
+  flagHeight
+);
+
+ctx.restore();
 
     // MAIN MESSAGE
     ctx.fillStyle = "#FFFFFF";

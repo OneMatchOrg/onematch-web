@@ -45,16 +45,27 @@ type Props = {
   params: Promise<{
     country: string;
   }>;
+  searchParams: Promise<{
+    from?: string;
+  }>;
 };
 
-export default async function SharePage({ params }: Props) {
+export default async function SharePage({
+  params,
+  searchParams,
+}: Props) {
   const { country } = await params;
+  const { from = "direct" } = await searchParams;
 
   const data = countries.find(
     (c) => c.code.toLowerCase() === country.toLowerCase()
   );
 
   if (!data) notFound();
+
+  const registrationUrl = `${data.registrationUrl}${
+    data.registrationUrl.includes("?") ? "&" : "?"
+  }from=onematch-${from}`;
 
   return (
     <main className="min-h-screen bg-[#09090B] text-white px-6 py-10">
@@ -105,6 +116,7 @@ export default async function SharePage({ params }: Props) {
             countryName={data.name}
             countryCode={data.code}
             flag={data.flag}
+            source={from}
           />
 
           <p className="mt-6 text-center text-sm leading-relaxed text-zinc-400">
@@ -130,7 +142,7 @@ export default async function SharePage({ params }: Props) {
           </p>
 
           <a
-            href={data.registrationUrl}
+            href={registrationUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 block w-full rounded-2xl bg-red-600 py-4 text-lg font-semibold text-white transition hover:bg-red-500"

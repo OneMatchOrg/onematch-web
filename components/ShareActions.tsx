@@ -12,14 +12,18 @@ type Props = {
   countryName: string;
   countryCode: string;
   flag: string;
+  source?: string;
 };
 
 export default function ShareActions({
   countryName,
   countryCode,
   flag,
+  source = "direct",
 }: Props) {
-  const shareUrl = `https://onematch.world/share/${countryCode.toLowerCase()}`;
+  const shareUrl = `https://onematch.world/share/${countryCode.toLowerCase()}?from=${encodeURIComponent(
+    source
+  )}`;
 
   const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(
     `Someone is waiting for a compatible bone marrow donor.\n\nThe next match could be found in ${countryName}.\n\n${shareUrl}`
@@ -54,7 +58,7 @@ export default function ShareActions({
     ctx.fillStyle = "#09090B";
     ctx.fillRect(0, 0, 1080, 1920);
 
-    // Red glow behind the logo
+    // Red glow
     const glow = ctx.createRadialGradient(540, 170, 60, 540, 170, 340);
     glow.addColorStop(0, "rgba(220,38,38,0.35)");
     glow.addColorStop(1, "rgba(220,38,38,0)");
@@ -84,31 +88,30 @@ export default function ShareActions({
 
     ctx.textAlign = "center";
 
-// 🇵🇹 Flag emoji (centrado sem afetar o resto)
-ctx.save();
+    // Flag
+    ctx.save();
 
-ctx.font = "180px sans-serif";
-ctx.fillStyle = "#FFFFFF";
-ctx.textAlign = "left";
-ctx.textBaseline = "middle";
+    ctx.font = "180px sans-serif";
+    ctx.fillStyle = "#FFFFFF";
+    ctx.textAlign = "left";
+    ctx.textBaseline = "middle";
 
-const flagWidth = ctx.measureText(flag).width;
-ctx.fillText(flag, 540 - flagWidth / 2, 520);
+    const flagWidth = ctx.measureText(flag).width;
+    ctx.fillText(flag, 540 - flagWidth / 2, 520);
 
-ctx.restore();
+    ctx.restore();
 
-// IMPORTANTE: voltar ao alinhamento normal
-ctx.textAlign = "center";
-ctx.textBaseline = "alphabetic";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "alphabetic";
 
-    // MAIN MESSAGE
+    // Main message
     ctx.fillStyle = "#FFFFFF";
     ctx.font = "700 82px Arial";
     ctx.fillText("Someone is waiting", 540, 700);
     ctx.fillText("for a compatible", 540, 800);
     ctx.fillText("bone marrow donor.", 540, 900);
 
-    // Secondary message
+    // Secondary
     ctx.fillStyle = "#A1A1AA";
     ctx.font = "40px Arial";
     ctx.fillText("The next match could be found", 540, 1050);
@@ -123,11 +126,11 @@ ctx.textBaseline = "alphabetic";
     ctx.font = "700 42px Arial";
     ctx.fillText("Help us find them.", 540, 1318);
 
-    // Link
+    // Link (agora preserva ?from=)
     ctx.fillStyle = "#FFFFFF";
-    ctx.font = "700 42px Arial";
+    ctx.font = "700 34px Arial";
     ctx.fillText(
-      `onematch.world/share/${countryCode.toLowerCase()}`,
+      `onematch.world/share/${countryCode.toLowerCase()}?from=${source}`,
       540,
       1700
     );
@@ -150,6 +153,7 @@ ctx.textBaseline = "alphabetic";
     track("country_shared", {
       country: countryCode,
       method: "instagram_story",
+      source,
     });
 
     if (navigator.canShare?.({ files: [file] })) {
@@ -171,6 +175,7 @@ ctx.textBaseline = "alphabetic";
     track("country_shared", {
       country: countryCode,
       method: "native",
+      source,
     });
 
     await navigator.share?.({
@@ -186,6 +191,7 @@ ctx.textBaseline = "alphabetic";
     track("country_shared", {
       country: countryCode,
       method: "clipboard",
+      source,
     });
   };
 
@@ -196,9 +202,9 @@ ctx.textBaseline = "alphabetic";
         onClick={handleInstagramStory}
         className="rounded-2xl border border-pink-500/30 bg-gradient-to-br from-pink-500/20 via-red-500/10 to-orange-500/20 p-4 transition hover:border-pink-500 hover:scale-[1.02]"
       >
-<div className="flex justify-center">
-  <FaInstagram className="h-8 w-8 text-white" />
-</div>
+        <div className="flex justify-center">
+          <FaInstagram className="h-8 w-8 text-white" />
+        </div>
         <div className="mt-2 text-sm font-semibold text-white">
           Instagram Story
         </div>
@@ -209,11 +215,18 @@ ctx.textBaseline = "alphabetic";
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() =>
+          track("country_shared", {
+            country: countryCode,
+            method: "whatsapp",
+            source,
+          })
+        }
         className="rounded-2xl border border-green-500/30 bg-green-500/10 p-4 text-center transition hover:border-green-500 hover:bg-green-500/20 hover:scale-[1.02]"
       >
-<div className="flex justify-center">
-  <FaWhatsapp className="h-8 w-8 text-[#25D366]" />
-</div>
+        <div className="flex justify-center">
+          <FaWhatsapp className="h-8 w-8 text-[#25D366]" />
+        </div>
         <div className="mt-2 text-sm font-semibold text-white">
           WhatsApp
         </div>
@@ -224,9 +237,9 @@ ctx.textBaseline = "alphabetic";
         onClick={handleShare}
         className="rounded-2xl border border-blue-500/30 bg-blue-500/10 p-4 transition hover:border-blue-500 hover:bg-blue-500/20 hover:scale-[1.02]"
       >
-<div className="flex justify-center">
-  <FaShareNodes className="h-8 w-8 text-[#60A5FA]" />
-</div>
+        <div className="flex justify-center">
+          <FaShareNodes className="h-8 w-8 text-[#60A5FA]" />
+        </div>
         <div className="mt-2 text-sm font-semibold text-white">
           Share
         </div>
@@ -237,9 +250,9 @@ ctx.textBaseline = "alphabetic";
         onClick={handleCopy}
         className="rounded-2xl border border-zinc-600 bg-zinc-800 p-4 transition hover:bg-zinc-700 hover:scale-[1.02]"
       >
-<div className="flex justify-center">
-  <FaLink className="h-8 w-8 text-zinc-300" />
-</div>
+        <div className="flex justify-center">
+          <FaLink className="h-8 w-8 text-zinc-300" />
+        </div>
         <div className="mt-2 text-sm font-semibold text-white">
           Copy Link
         </div>

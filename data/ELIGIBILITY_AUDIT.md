@@ -718,8 +718,69 @@ Only information confirmed through official registry sources is included.
 * Verified: 2026-09-09
 * Status: L4
 
+## 🇺🇦 Ukraine
+
+Registration age: 18–35 years
+
+First step: Complete the official online pre-registration and receive a DNA cheek-swab test kit by post.
+
+Official registry: Ukrainian Bone Marrow Donor Registry (UBMDR)
+
+Verified: 2026-09-14
+
+Status: L5 VERIFIED
+
+# 🇱🇮 Liechtenstein
+
+Registration age: 18–40 years
+
+First step: Complete the official online registration and continue the Swiss stem cell donor registration process.
+
+Official registry: Blutspende SRK Schweiz
+
+Verified: 2026-09-14
+
+Status: L5 VERIFIED
+
+# 🇦🇲 Armenia
+
+Registration age: 18–50 years
+
+First step: Complete the official donor form and provide a cheek swab tissue sample.
+
+Official registry: Armenian Bone Marrow Donor Registry (ABMDR)
+
+Verified: 2026-09-14
+
+Status: L5 VERIFIED
+
+# 🇦🇩 Andorra
+
+Registration age: 18–40 years
+
+First step: Complete the official online self-registration through the Andorra bone marrow donation portal.
+
+Official registry: REDMO (coordinated by SAAS – Servei Andorrà d'Atenció Sanitària)
+
+Verified: 2026-09-14
+
+Status: L5 VERIFIED
+
+# 🇸🇲 San Marino
+
+Registration age: 18–35 years
+
+First step: Book an official appointment with ASLEM to complete registration and provide the required sample.
+
+Official registry: IBMDR (Italian Bone Marrow Donor Registry) via ASLEM
+
+Verified: 2026-09-14
+
+Status: L5 VERIFIED
 
 ## Pending Audit
 
 The following countries remain L3 until official registration-age verification is completed.
+
+## 🇷🇸 Serbia
 

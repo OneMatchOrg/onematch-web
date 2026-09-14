@@ -6,45 +6,131 @@ Countries waiting to become **L4 Ready** before being added to OneMatch.
 
 These countries have an official registry identified, but a critical verification is still missing.
 
+# OneMatch L3 Backlog
+
+Countries waiting to become **L4 Ready** before being added to OneMatch.
+
+## 🚧 Blocked
+
+These countries have an official registry identified, but a critical verification is still missing — or no official public registration pathway could be verified.
+
 ### 🇱🇻 Latvia
 
-* Official blood service confirmed.
-* Missing official confirmation of the bone marrow registration age.
-* Missing dedicated registry registration page.
-* Next action: verify the Latvian Bone Marrow Donor Registry documentation.
+- Official institution confirmed (Valsts asinsdonoru centrs – VADC).
+- Registration age confirmed (**18–65 years**).
+- Missing official public bone marrow donor registration page.
+- Missing official first registration step for marrow donors.
+- Verified: 2026-09-14
+- Status: L3
 
 ---
 
-## 🇲🇹 Malta
+### 🇲🇹 Malta
 
-**Status:** Blocked
-
-**Reason:** Official blood donation pages are current, but the public bone marrow donor registration page could not be confirmed as current.
-
-**Missing verification:**
-
-* Current official registration page.
-* Current registration age.
-* Current first registration step.
-
-**Next action:** Verify the Bone Marrow Donor Programme with an official current source before promoting to L4.
+- Official blood donation programme confirmed.
+- Missing official public bone marrow donor registration page.
+- Missing official first registration step.
+- Blood donation age (**17–65 years**) confirmed, but not applicable to marrow registration.
+- Verified: 2026-09-14
+- Status: L3
 
 ---
 
-## 🇲🇩 Moldova
+### 🇲🇩 Moldova
 
-**Status:** Blocked
+- Official institutions confirmed (CNTS + Ministry of Health).
+- Missing official public bone marrow donor registration page.
+- Missing official registration age.
+- Missing official first registration step.
+- Verified: 2026-09-14
+- Status: L3
 
-**Reason:** Official institutions confirmed, but no current public bone marrow donor registration page could be verified.
+---
 
-**Missing verification:**
+### 🇷🇸 Serbia
 
-* Current registration age.
-* Current official registration page.
-* Current first registration step.
+- Official registry confirmed.
+- Missing frictionless official public registration pathway.
+- Registration requires an in-person process without a public registration portal.
+- Verified: 2026-09-14
+- Status: L3
 
-**Next action:** Verify the official bone marrow donor recruitment pathway through CNTS or the Transplant Agency before promoting to L4.
+---
 
+### 🇦🇱 Albania
+
+- No official bone marrow donor registry could be verified.
+- No public registration pathway found.
+- Verified: 2026-09-14
+- Status: L3
+
+---
+
+### 🇧🇦 Bosnia and Herzegovina
+
+- Official organ donation programme confirmed.
+- No official bone marrow donor registry could be verified.
+- Verified: 2026-09-14
+- Status: L3
+
+---
+
+### 🇲🇪 Montenegro
+
+- Official organ donation programme confirmed.
+- No official bone marrow donor registry could be verified.
+- Verified: 2026-09-14
+- Status: L3
+
+---
+
+### 🇲🇰 North Macedonia
+
+- Official registry exists (MBMDR).
+- Missing official public registration page.
+- Missing frictionless public registration pathway.
+- Verified: 2026-09-14
+- Status: L3
+
+---
+
+### 🇬🇪 Georgia
+
+- Official blood donor portal confirmed.
+- No official public bone marrow donor registration pathway could be verified.
+- Verified: 2026-09-14
+- Status: L3
+
+---
+
+### 🇲🇨 Monaco
+
+- Official healthcare institutions confirmed.
+- No official public bone marrow donor registration pathway for Monaco residents could be verified.
+- Verified: 2026-09-14
+- Status: L3
+
+---
+
+### 🇦🇿 Azerbaijan
+
+- Legal framework for marrow donation exists.
+- No official public bone marrow donor registration pathway could be verified.
+- Not listed as a donor registry in WMDA.
+- Verified: 2026-09-14
+- Status: L3
+
+---
+
+### 🇧🇾 Belarus
+
+- Bone marrow transplant programmes exist.
+- No official public donor registry registration pathway could be verified.
+- Not listed as a donor registry in WMDA.
+- Verified: 2026-09-14
+- Status: L3
+
+---
 
 ## 🇨🇷 Costa Rica
 
@@ -108,24 +194,20 @@ These countries have an official registry identified, but a critical verificatio
 
 ### Europe
 
-* 🇸🇰 Slovakia
-* 🇸🇮 Slovenia
-* 🇭🇷 Croatia
-* 🇱🇹 Lithuania
-* 🇨🇾 Cyprus
-* 🇭🇺 Hungary
-* 🇷🇴 Romania
+🇱🇻 Latvia
+🇲🇹 Malta
+🇲🇩 Moldova
 
 ### Asia
 
-* 🇰🇷 South Korea
-* 🇹🇼 Taiwan
-* 🇸🇬 Singapore
-* 🇮🇱 Israel
+🇵🇭 Philippines
+🇻🇳 Vietnam
 
 ### Americas
 
-* 🇲🇽 Mexico
+🇨🇷 Costa Rica
+🇵🇦 Panama
+
 
 ---
 

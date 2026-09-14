@@ -191,9 +191,6 @@ export default function CountryCard({ country }: Props) {
             <span>🎂 {country.eligibleAge}</span>
           </>
         )}
-
-        <span className="text-zinc-500">·</span>
-        <span>{country.estimatedTime}</span>
       </div>
 
 <div className="mt-5 flex gap-3">

@@ -815,7 +815,7 @@ export const countries: Country[] = [
   landingPage: "/sm",
   registrationUrl: "https://www.aslem.sm/contatta-aslem/",
   directRegistration: true,
-  registrationType: "appointment",
+  registrationType: "donor-centre",
   verified: "2026-09-14",
   status: "verified",
   eligibleAge: "18–35 years",

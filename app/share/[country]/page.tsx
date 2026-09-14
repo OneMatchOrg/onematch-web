@@ -82,6 +82,10 @@ export default async function SharePage({
             className="mx-auto w-64 md:w-72 h-auto"
           />
 
+          <h1 className="mt-3 text-5xl md:text-6xl font-bold tracking-tight">
+  <span className="text-white">OneMatch</span>
+</h1>
+
           <p className="mt-2 text-xs uppercase tracking-[0.35em] text-zinc-500">
             One world. One match. One life.
           </p>

@@ -46,7 +46,7 @@ type Props = {
     country: string;
   }>;
   searchParams: Promise<{
-    from?: string;
+    from?: string | string[];
   }>;
 };
 
@@ -55,7 +55,11 @@ export default async function SharePage({
   searchParams,
 }: Props) {
   const { country } = await params;
-  const { from = "direct" } = await searchParams;
+  const resolvedSearchParams = await searchParams;
+
+  const from = Array.isArray(resolvedSearchParams.from)
+    ? resolvedSearchParams.from[0]
+    : resolvedSearchParams.from ?? "direct";
 
   const data = countries.find(
     (c) => c.code.toLowerCase() === country.toLowerCase()
@@ -65,12 +69,11 @@ export default async function SharePage({
 
   const registrationUrl = `${data.registrationUrl}${
     data.registrationUrl.includes("?") ? "&" : "?"
-  }from=onematch-${from}`;
+  }from=onematch-${encodeURIComponent(from)}`;
 
   return (
     <main className="min-h-screen bg-[#09090B] text-white px-6 py-10">
       <div className="mx-auto max-w-md">
-
         {/* Hero */}
         <div className="text-center">
           <img
@@ -83,9 +86,7 @@ export default async function SharePage({
             One world. One match. One life.
           </p>
 
-          <div className="mt-8 text-6xl leading-none">
-            {data.flag}
-          </div>
+          <div className="mt-8 text-6xl leading-none">{data.flag}</div>
 
           <h1 className="mt-6 text-4xl font-bold leading-tight tracking-tight">
             The next match
@@ -109,7 +110,8 @@ export default async function SharePage({
           <p className="mt-3 text-center text-zinc-400 leading-relaxed">
             The right donor could be anywhere.
             <br />
-            Your share could help the right person discover the official registry.
+            Your share could help the right person discover the official
+            registry.
           </p>
 
           <ShareActions
@@ -130,7 +132,6 @@ export default async function SharePage({
 
         {/* Register */}
         <div className="mt-10 rounded-3xl border border-red-500/30 bg-gradient-to-b from-red-500/15 to-red-900/20 p-6 text-center">
-
           <div className="text-4xl">❤️</div>
 
           <h3 className="mt-3 text-2xl font-semibold">
@@ -138,7 +139,8 @@ export default async function SharePage({
           </h3>
 
           <p className="mt-3 leading-relaxed text-zinc-300">
-            It only takes a few minutes to become part of the official registry.
+            It only takes a few minutes to become part of the official
+            registry.
           </p>
 
           <a
@@ -153,7 +155,6 @@ export default async function SharePage({
 
         {/* Trust */}
         <div className="mt-10 rounded-3xl border border-zinc-800 bg-zinc-900/40 p-5 backdrop-blur space-y-5">
-
           <div className="flex items-start gap-3">
             <span className="text-xl">🌍</span>
             <p className="text-sm text-zinc-300">
@@ -174,22 +175,16 @@ export default async function SharePage({
               Every share helps another person discover the official registry.
             </p>
           </div>
-
         </div>
 
         {/* Footer */}
         <div className="mt-12 text-center">
-
-          <h4 className="text-2xl font-semibold">
-            Become the next link.
-          </h4>
+          <h4 className="text-2xl font-semibold">Become the next link.</h4>
 
           <p className="mt-3 text-sm uppercase tracking-[0.25em] text-zinc-500">
             One world. One match. One life.
           </p>
-
         </div>
-
       </div>
     </main>
   );

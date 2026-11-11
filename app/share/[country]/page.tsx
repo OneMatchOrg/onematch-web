@@ -1,3 +1,4 @@
+
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { countries } from "@/data/countries";
@@ -83,8 +84,8 @@ export default async function SharePage({
           />
 
           <h1 className="mt-3 text-5xl md:text-6xl font-bold tracking-tight">
-  <span className="text-white">OneMatch</span>
-</h1>
+            <span className="text-white">OneMatch</span>
+          </h1>
 
           <p className="mt-2 text-xs uppercase tracking-[0.35em] text-zinc-500">
             One world. One match. One life.
@@ -139,7 +140,7 @@ export default async function SharePage({
           <div className="text-4xl">❤️</div>
 
           <h3 className="mt-3 text-2xl font-semibold">
-            Join {data.name}'s official registry
+            Join {data.name}&apos;s official registry
           </h3>
 
           <p className="mt-3 leading-relaxed text-zinc-300">
@@ -153,7 +154,7 @@ export default async function SharePage({
             rel="noopener noreferrer"
             className="mt-6 block w-full rounded-2xl bg-red-600 py-4 text-lg font-semibold text-white transition hover:bg-red-500"
           >
-            Join {data.name}'s official registry ↗
+            Join {data.name}&apos;s official registry ↗
           </a>
         </div>
 
@@ -169,7 +170,7 @@ export default async function SharePage({
           <div className="flex items-start gap-3">
             <span className="text-xl">❤️</span>
             <p className="text-sm text-zinc-300">
-              One person can become someone's only compatible donor.
+              One person can become someone&apos;s only compatible donor.
             </p>
           </div>
 

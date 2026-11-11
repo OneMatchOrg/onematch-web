@@ -1,3 +1,4 @@
+
 "use client";
 
 import { track } from "@vercel/analytics";
@@ -45,12 +46,16 @@ export default function CountryCard({ country }: Props) {
   const router = useRouter();
 
   useEffect(() => {
-    const completedInSession =
-      sessionStorage.getItem(`completed-${country.code}`) === "true";
+    const timer = setTimeout(() => {
+      const completedInSession =
+        sessionStorage.getItem(`completed-${country.code}`) === "true";
 
-    if (completedInSession) {
-      setCompleted(true);
-    }
+      if (completedInSession) {
+        setCompleted(true);
+      }
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [country.code]);
 
   const info = registrationTypeInfo[country.registrationType];
@@ -193,25 +198,25 @@ export default function CountryCard({ country }: Props) {
         )}
       </div>
 
-<div className="mt-5 flex gap-3">
-  <button
-    onClick={handleCardClick}
-    className="flex-1 rounded-xl bg-red-600 py-3 font-medium text-white hover:bg-red-500 transition"
-  >
-    ❤️ Register
-  </button>
+      <div className="mt-5 flex gap-3">
+        <button
+          onClick={handleCardClick}
+          className="flex-1 rounded-xl bg-red-600 py-3 font-medium text-white hover:bg-red-500 transition"
+        >
+          ❤️ Register
+        </button>
 
-  <button
-    onClick={(e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      router.push(`/share/${country.code.toLowerCase()}`);
-    }}
-    className="flex-1 rounded-xl border border-zinc-700 py-3 font-medium text-zinc-200 hover:bg-zinc-800 transition"
-  >
-    📤 Share
-  </button>
-</div>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            router.push(`/share/${country.code.toLowerCase()}`);
+          }}
+          className="flex-1 rounded-xl border border-zinc-700 py-3 font-medium text-zinc-200 hover:bg-zinc-800 transition"
+        >
+          📤 Share
+        </button>
+      </div>
 
       {copied && (
         <p className="mt-3 text-xs text-green-400">

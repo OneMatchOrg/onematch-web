@@ -174,7 +174,7 @@ export default function ShareModal({
           <div className="mb-4 text-5xl">❤️</div>
 
           <h2 className="text-2xl font-semibold text-white">
-            You're on your way
+            You&apos;re on your way
           </h2>
 
           <p className="mt-3 text-zinc-300">

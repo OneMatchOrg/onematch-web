@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -104,7 +105,7 @@ export default function PortugalPage() {
               <div>
                 <h3 className="font-semibold text-lg">Blood sample</h3>
                 <p className="text-zinc-400">
-                  If you're eligible, a small blood sample is collected for HLA
+                  If you&apos;re eligible, a small blood sample is collected for HLA
                   typing.
                 </p>
               </div>
@@ -117,7 +118,7 @@ export default function PortugalPage() {
               <div>
                 <h3 className="font-semibold text-lg">Join the registry</h3>
                 <p className="text-zinc-400">
-                  You'll only be contacted if you're a compatible match for a
+                  You&apos;ll only be contacted if you&apos;re a compatible match for a
                   patient.
                 </p>
               </div>
@@ -143,7 +144,7 @@ export default function PortugalPage() {
                 Will I donate immediately after registering?
               </h3>
               <p className="text-zinc-400 mt-1">
-                No. Registration simply means you'll be contacted if you're a
+                No. Registration simply means you&apos;ll be contacted if you&apos;re a
                 compatible match.
               </p>
             </div>
@@ -172,7 +173,7 @@ export default function PortugalPage() {
             <div className="absolute inset-0 rounded-full bg-[#09090B]/95 backdrop-blur flex flex-col items-center justify-center">
               <div className="animate-pulse text-3xl mb-2">❤️</div>
               <p className="text-white font-medium text-center">
-                Taking you to Portugal's official registry...
+                Taking you to Portugal&apos;s official registry...
               </p>
             </div>
           )}

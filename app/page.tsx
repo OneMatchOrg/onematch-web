@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -41,10 +42,14 @@ export default function Home() {
 
   // Sugere o país pela língua do browser
   useEffect(() => {
-    const lang = navigator.language.toLowerCase();
-    const short = lang.split("-")[0];
+    const timer = setTimeout(() => {
+      const lang = navigator.language.toLowerCase();
+      const short = lang.split("-")[0];
 
-    setSuggestedCode(languageMap[lang] || languageMap[short] || null);
+      setSuggestedCode(languageMap[lang] || languageMap[short] || null);
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, []);
 
   // Mostra o Welcome Back quando o utilizador regressa

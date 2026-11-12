@@ -40,7 +40,7 @@ export default function Home() {
 
   const router = useRouter();
 
-  // Sugere o país pela língua do browser
+  // Suggests a country based on browser language
   useEffect(() => {
     const timer = setTimeout(() => {
       const lang = navigator.language.toLowerCase();
@@ -52,7 +52,7 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Mostra o Welcome Back quando o utilizador regressa
+  // Shows Welcome Back when the user returns
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
 
@@ -168,8 +168,45 @@ export default function Home() {
             ))}
           </div>
 
+          {/* Community Contributions */}
+          <section className="mt-16 mb-10">
+            <div className="relative overflow-hidden rounded-3xl border border-red-500/20 bg-gradient-to-br from-zinc-900 via-zinc-900 to-red-950/40 p-8 md:p-12 text-center">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
+
+              <div className="relative max-w-2xl mx-auto">
+                <div className="text-4xl mb-5">❤️</div>
+
+                <p className="text-red-400 text-sm font-semibold uppercase tracking-[0.2em] mb-3">
+                  Community powered
+                </p>
+
+                <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+                  Help improve OneMatch
+                </h2>
+
+                <p className="mt-5 text-zinc-300 text-base md:text-lg leading-relaxed">
+                  Know something we should update? Found a better source?
+                  Share your knowledge and help us keep OneMatch accurate,
+                  up to date and useful for everyone.
+                </p>
+
+                <a
+                  href="/contribute"
+                  className="inline-flex items-center justify-center gap-2 mt-8 rounded-full bg-red-600 hover:bg-red-500 px-8 py-4 text-white font-semibold transition duration-300 shadow-lg shadow-red-950/30"
+                >
+                  Help us improve
+                  <span aria-hidden="true">→</span>
+                </a>
+
+                <p className="mt-5 text-sm text-zinc-500">
+                  Every contribution makes a difference.
+                </p>
+              </div>
+            </div>
+          </section>
+
           {/* Footer */}
-          <p className="text-center text-zinc-500 text-sm mt-14 pb-6">
+          <p className="text-center text-zinc-500 text-sm mt-8 pb-6">
             Heartbeat v0.1 • Founder #001 — Tiago Reis Leitão
           </p>
         </div>

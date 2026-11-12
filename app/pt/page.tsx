@@ -11,11 +11,11 @@ export default function PortugalPage() {
   const portugal = countries.find((c) => c.code === "PT");
 
   const verifiedLabel = portugal
-    ? new Date(portugal.verified).toLocaleDateString("en-GB", {
-        month: "short",
+    ? new Date(portugal.verified).toLocaleDateString("pt-PT", {
+        month: "long",
         year: "numeric",
       })
-    : "Verified";
+    : "Verificado";
 
   const handleStart = () => {
     setLoading(true);
@@ -38,7 +38,7 @@ export default function PortugalPage() {
           href="/"
           className="inline-flex items-center text-zinc-400 hover:text-red-500 transition mb-6"
         >
-          ← Back to OneMatch
+          ← Voltar ao OneMatch
         </Link>
 
         {/* Hero */}
@@ -52,74 +52,75 @@ export default function PortugalPage() {
           <h1 className="text-5xl md:text-6xl font-bold">🇵🇹 Portugal</h1>
 
           <p className="mt-2 text-xl text-zinc-300">
-            Bone Marrow Donor Registry
+            Registo Português de Dadores de Medula Óssea
           </p>
 
           <p className="mt-2 text-red-500">
-            Official organisation: CEDACE (IPST)
+            Entidade oficial: CEDACE (IPST)
           </p>
         </div>
 
         {/* Info Cards */}
         <div className="grid md:grid-cols-3 gap-4 mb-8">
           <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
-            <p className="text-zinc-400 text-sm">Organisation</p>
+            <p className="text-zinc-400 text-sm">Entidade</p>
             <h3 className="text-xl font-semibold mt-1">CEDACE</h3>
           </div>
 
           <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
-            <p className="text-zinc-400 text-sm">Typical age</p>
-            <h3 className="text-xl font-semibold mt-1">18–35 years</h3>
+            <p className="text-zinc-400 text-sm">Idade habitual</p>
+            <h3 className="text-xl font-semibold mt-1">18–35 anos</h3>
           </div>
 
           <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
-            <p className="text-zinc-400 text-sm">Verified</p>
+            <p className="text-zinc-400 text-sm">Última verificação</p>
             <h3 className="text-xl font-semibold mt-1">{verifiedLabel}</h3>
           </div>
         </div>
 
         {/* Steps */}
         <section className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 mb-8">
-          <h2 className="text-3xl font-bold mb-6">How it works</h2>
+          <h2 className="text-3xl font-bold mb-6">Como funciona</h2>
 
           <div className="space-y-6">
             <div className="flex gap-4">
-              <div className="w-10 h-10 rounded-full bg-red-500 flex items-center justify-center font-bold">
+              <div className="w-10 h-10 shrink-0 rounded-full bg-red-500 flex items-center justify-center font-bold">
                 1
               </div>
               <div>
                 <h3 className="font-semibold text-lg">
-                  Complete the questionnaire
+                  Preenche o questionário
                 </h3>
                 <p className="text-zinc-400">
-                  Start your official registration through the CEDACE/IPST online
-                  questionnaire.
+                  Inicia o teu processo de inscrição através do questionário
+                  online oficial do CEDACE/IPST.
                 </p>
               </div>
             </div>
 
             <div className="flex gap-4">
-              <div className="w-10 h-10 rounded-full bg-red-500 flex items-center justify-center font-bold">
+              <div className="w-10 h-10 shrink-0 rounded-full bg-red-500 flex items-center justify-center font-bold">
                 2
               </div>
               <div>
-                <h3 className="font-semibold text-lg">Blood sample</h3>
+                <h3 className="font-semibold text-lg">Colheita de sangue</h3>
                 <p className="text-zinc-400">
-                  If you&apos;re eligible, a small blood sample is collected for HLA
-                  typing.
+                  Se reunires as condições necessárias, será recolhida uma
+                  pequena amostra de sangue para determinar as tuas
+                  características HLA.
                 </p>
               </div>
             </div>
 
             <div className="flex gap-4">
-              <div className="w-10 h-10 rounded-full bg-red-500 flex items-center justify-center font-bold">
+              <div className="w-10 h-10 shrink-0 rounded-full bg-red-500 flex items-center justify-center font-bold">
                 3
               </div>
               <div>
-                <h3 className="font-semibold text-lg">Join the registry</h3>
+                <h3 className="font-semibold text-lg">Entrada no registo</h3>
                 <p className="text-zinc-400">
-                  You&apos;ll only be contacted if you&apos;re a compatible match for a
-                  patient.
+                  Só serás contactado se fores compatível com um doente que
+                  necessite de um transplante.
                 </p>
               </div>
             </div>
@@ -128,32 +129,36 @@ export default function PortugalPage() {
 
         {/* FAQ */}
         <section className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 mb-8">
-          <h2 className="text-3xl font-bold mb-6">Quick FAQ</h2>
+          <h2 className="text-3xl font-bold mb-6">
+            Perguntas frequentes
+          </h2>
 
           <div className="space-y-5">
             <div>
-              <h3 className="font-semibold">Is donating always surgery?</h3>
+              <h3 className="font-semibold">
+                A doação implica sempre uma cirurgia?
+              </h3>
               <p className="text-zinc-400 mt-1">
-                No. Most donations happen through a procedure similar to donating
-                blood.
+                Não. A maioria das dádivas é realizada através de um
+                procedimento semelhante a uma dádiva de sangue.
               </p>
             </div>
 
             <div>
               <h3 className="font-semibold">
-                Will I donate immediately after registering?
+                Vou doar imediatamente após a inscrição?
               </h3>
               <p className="text-zinc-400 mt-1">
-                No. Registration simply means you&apos;ll be contacted if you&apos;re a
-                compatible match.
+                Não. A inscrição significa apenas que poderás ser contactado
+                caso sejas compatível com um doente.
               </p>
             </div>
 
             <div>
-              <h3 className="font-semibold">Is registration free?</h3>
+              <h3 className="font-semibold">A inscrição é gratuita?</h3>
               <p className="text-zinc-400 mt-1">
-                Yes. Registration through the official CEDACE/IPST process is
-                free.
+                Sim. A inscrição através do processo oficial do CEDACE/IPST
+                é gratuita.
               </p>
             </div>
           </div>
@@ -166,22 +171,60 @@ export default function PortugalPage() {
             disabled={loading}
             className="block w-full text-center bg-red-500 hover:bg-red-600 transition rounded-full py-5 text-xl font-semibold disabled:opacity-100"
           >
-            Start Official Registration →
+            Iniciar inscrição oficial →
           </button>
 
           {loading && (
             <div className="absolute inset-0 rounded-full bg-[#09090B]/95 backdrop-blur flex flex-col items-center justify-center">
               <div className="animate-pulse text-3xl mb-2">❤️</div>
               <p className="text-white font-medium text-center">
-                Taking you to Portugal&apos;s official registry...
+                A encaminhar para o registo oficial português...
               </p>
             </div>
           )}
         </div>
 
-        <p className="text-center text-zinc-500 text-sm mt-8">
-          Eligibility requirements may change. Always confirm the latest
-          information on the official IPST website.
+        {/* Community Contributions */}
+        <section className="mt-16 mb-10">
+          <div className="relative overflow-hidden rounded-3xl border border-red-500/20 bg-gradient-to-br from-zinc-900 via-zinc-900 to-red-950/40 p-8 md:p-12 text-center">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="relative max-w-2xl mx-auto">
+              <div className="text-4xl mb-5">❤️</div>
+
+              <p className="text-red-400 text-sm font-semibold uppercase tracking-[0.2em] mb-3">
+                Construído com a comunidade
+              </p>
+
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+                Ajuda a melhorar o OneMatch
+              </h2>
+
+              <p className="mt-5 text-zinc-300 text-base md:text-lg leading-relaxed">
+                Conheces alguma informação que devemos atualizar?
+                Encontraste uma fonte mais recente ou fidedigna?
+                Partilha o teu conhecimento e ajuda-nos a manter o
+                OneMatch correto, atualizado e útil para todos.
+              </p>
+
+              <Link
+                href="/contribute?lang=pt"
+                className="inline-flex items-center justify-center gap-2 mt-8 rounded-full bg-red-600 hover:bg-red-500 px-8 py-4 text-white font-semibold transition duration-300 shadow-lg shadow-red-950/30"
+              >
+                Ajuda-nos a melhorar
+                <span aria-hidden="true">→</span>
+              </Link>
+
+              <p className="mt-5 text-sm text-zinc-500">
+                Cada contributo faz a diferença.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <p className="text-center text-zinc-500 text-sm mt-8 pb-6">
+          A idade e os critérios de elegibilidade podem sofrer alterações.
+          Confirma sempre a informação mais recente junto do IPST.
         </p>
       </div>
     </main>

@@ -1,31 +1,104 @@
 
 "use client";
 
-import { useRef, useState } from "react";
+import { Suspense, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
+import {
+  Turnstile,
+  type TurnstileInstance,
+} from "@marsidev/react-turnstile";
 import { countries } from "@/data/countries";
 
-const contributionTypes = [
-  {
-    value: "incorrect_info",
-    label: "Report incorrect country information",
+const translations = {
+  en: {
+    back: "← Back to OneMatch",
+    title: "Help improve OneMatch.",
+    intro:
+      "Found incorrect information? Know a donor registry we're missing? Your contribution can help someone find the right registry.",
+    typesLabel: "What would you like to do?",
+    types: [
+      "Report incorrect country information",
+      "Suggest a donor registry",
+      "Share an experience",
+      "Other suggestion",
+    ],
+    country: "Country (optional)",
+    selectCountry: "Select a country",
+    message: "Your message",
+    placeholder:
+      "Tell us what needs correcting or what we should add...",
+    source: "Source link (optional)",
+    email: "Email address (optional)",
+    emailPlaceholder: "you@example.com",
+    emailNote:
+      "Only provide your email if you'd like us to contact you about your contribution.",
+    security: "Security verification failed. Please try again.",
+    minLength: "Please provide at least 10 characters.",
+    verification: "Please complete the security verification.",
+    submitError: "Could not submit contribution.",
+    generalError:
+      "We couldn't submit your contribution. Please try again.",
+    submitting: "Submitting...",
+    submit: "Submit contribution →",
+    review:
+      "Every contribution is reviewed before any changes are made to OneMatch.",
+    thanks: "Thank you for helping OneMatch!",
+    received:
+      "Your contribution has been received and will be reviewed by our team.",
+    another: "Send another contribution",
   },
-  {
-    value: "suggest_registry",
-    label: "Suggest a donor registry",
+  pt: {
+    back: "← Voltar ao OneMatch",
+    title: "Ajuda a melhorar o OneMatch.",
+    intro:
+      "Encontraste informação incorreta? Conheces um registo de dadores que nos esteja a faltar? O teu contributo pode ajudar alguém a encontrar o registo certo.",
+    typesLabel: "O que gostarias de fazer?",
+    types: [
+      "Comunicar informação incorreta sobre um país",
+      "Sugerir um registo de dadores",
+      "Partilhar uma experiência",
+      "Outra sugestão",
+    ],
+    country: "País (opcional)",
+    selectCountry: "Seleciona um país",
+    message: "A tua mensagem",
+    placeholder:
+      "Diz-nos o que precisa de ser corrigido ou o que devemos acrescentar...",
+    source: "Ligação da fonte (opcional)",
+    email: "Endereço de email (opcional)",
+    emailPlaceholder: "tu@exemplo.com",
+    emailNote:
+      "Indica o teu email apenas se quiseres que entremos em contacto contigo sobre o teu contributo.",
+    security: "A verificação de segurança falhou. Tenta novamente.",
+    minLength: "Escreve pelo menos 10 caracteres.",
+    verification: "Conclui a verificação de segurança.",
+    submitError: "Não foi possível enviar o contributo.",
+    generalError:
+      "Não foi possível enviar o teu contributo. Tenta novamente.",
+    submitting: "A enviar...",
+    submit: "Enviar contributo →",
+    review:
+      "Todos os contributos são analisados antes de qualquer alteração ao OneMatch.",
+    thanks: "Obrigado por ajudares o OneMatch!",
+    received:
+      "Recebemos o teu contributo. A nossa equipa irá analisá-lo.",
+    another: "Enviar outro contributo",
   },
-  {
-    value: "share_experience",
-    label: "Share an experience",
-  },
-  {
-    value: "other",
-    label: "Other suggestion",
-  },
-] as const;
+};
 
-export default function ContributePage() {
+function ContributeForm() {
+  const searchParams = useSearchParams();
+  const lang = searchParams.get("lang") === "pt" ? "pt" : "en";
+  const t = translations[lang];
+
+  const contributionTypes = [
+    "incorrect_info",
+    "suggest_registry",
+    "share_experience",
+    "other",
+  ];
+
   const turnstileRef = useRef<TurnstileInstance>(null);
 
   const [type, setType] = useState("incorrect_info");
@@ -39,19 +112,21 @@ export default function ContributePage() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
     e.preventDefault();
     setError("");
 
     if (website) return;
 
     if (message.trim().length < 10) {
-      setError("Please provide at least 10 characters.");
+      setError(t.minLength);
       return;
     }
 
     if (!turnstileToken) {
-      setError("Please complete the security verification.");
+      setError(t.verification);
       return;
     }
 
@@ -77,9 +152,7 @@ export default function ContributePage() {
       const result = await response.json();
 
       if (!response.ok || !result.success) {
-        throw new Error(
-          result.error || "Could not submit contribution."
-        );
+        throw new Error(result.error || t.submitError);
       }
 
       setSuccess(true);
@@ -93,9 +166,7 @@ export default function ContributePage() {
       turnstileRef.current?.reset();
     } catch (err) {
       console.error("Contribution submission failed:", err);
-      setError(
-        "We couldn't submit your contribution. Please try again."
-      );
+      setError(t.generalError);
       setTurnstileToken("");
       turnstileRef.current?.reset();
     } finally {
@@ -107,21 +178,19 @@ export default function ContributePage() {
     <main className="min-h-screen bg-[#09090B] text-white px-6 py-10">
       <div className="max-w-2xl mx-auto">
         <Link
-          href="/"
+          href={lang === "pt" ? "/pt" : "/"}
           className="inline-flex items-center text-zinc-400 hover:text-red-500 transition mb-8"
         >
-          ← Back to OneMatch
+          {t.back}
         </Link>
 
         <div className="text-center mb-10">
           <div className="text-5xl mb-4">❤️</div>
           <h1 className="text-4xl md:text-5xl font-bold">
-            Help improve OneMatch.
+            {t.title}
           </h1>
           <p className="mt-4 text-zinc-400 text-lg leading-relaxed">
-            Found incorrect information? Know a donor registry
-            we&apos;re missing? Your contribution can help someone
-            find the right registry.
+            {t.intro}
           </p>
         </div>
 
@@ -129,17 +198,16 @@ export default function ContributePage() {
           <div className="rounded-3xl border border-green-500/30 bg-green-500/10 p-8 text-center">
             <div className="text-4xl mb-4">💚</div>
             <h2 className="text-2xl font-semibold">
-              Thank you for helping OneMatch!
+              {t.thanks}
             </h2>
             <p className="mt-3 text-zinc-300">
-              Your contribution has been received and will be
-              reviewed by our team.
+              {t.received}
             </p>
             <button
               onClick={() => setSuccess(false)}
               className="mt-6 rounded-full bg-red-600 px-6 py-3 font-medium hover:bg-red-500 transition"
             >
-              Send another contribution
+              {t.another}
             </button>
           </div>
         ) : (
@@ -149,7 +217,7 @@ export default function ContributePage() {
           >
             <div>
               <label className="block text-sm font-medium mb-2">
-                What would you like to do?
+                {t.typesLabel}
               </label>
               <select
                 value={type}
@@ -157,9 +225,9 @@ export default function ContributePage() {
                 required
                 className="w-full rounded-xl border border-zinc-700 bg-zinc-950 px-4 py-3 text-white"
               >
-                {contributionTypes.map((item) => (
-                  <option key={item.value} value={item.value}>
-                    {item.label}
+                {contributionTypes.map((value, index) => (
+                  <option key={value} value={value}>
+                    {t.types[index]}
                   </option>
                 ))}
               </select>
@@ -167,14 +235,14 @@ export default function ContributePage() {
 
             <div>
               <label className="block text-sm font-medium mb-2">
-                Country (optional)
+                {t.country}
               </label>
               <select
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
                 className="w-full rounded-xl border border-zinc-700 bg-zinc-950 px-4 py-3 text-white"
               >
-                <option value="">Select a country</option>
+                <option value="">{t.selectCountry}</option>
                 {countries
                   .slice()
                   .sort((a, b) => a.name.localeCompare(b.name))
@@ -188,7 +256,7 @@ export default function ContributePage() {
 
             <div>
               <label className="block text-sm font-medium mb-2">
-                Your message
+                {t.message}
               </label>
               <textarea
                 value={message}
@@ -197,7 +265,7 @@ export default function ContributePage() {
                 minLength={10}
                 maxLength={5000}
                 rows={6}
-                placeholder="Tell us what needs correcting or what we should add..."
+                placeholder={t.placeholder}
                 className="w-full rounded-xl border border-zinc-700 bg-zinc-950 px-4 py-3 text-white placeholder:text-zinc-500 focus:border-red-500 outline-none resize-y"
               />
               <p className="mt-1 text-xs text-zinc-500 text-right">
@@ -207,7 +275,7 @@ export default function ContributePage() {
 
             <div>
               <label className="block text-sm font-medium mb-2">
-                Source link (optional)
+                {t.source}
               </label>
               <input
                 type="url"
@@ -220,22 +288,20 @@ export default function ContributePage() {
 
             <div>
               <label className="block text-sm font-medium mb-2">
-                Email address (optional)
+                {t.email}
               </label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@example.com"
+                placeholder={t.emailPlaceholder}
                 className="w-full rounded-xl border border-zinc-700 bg-zinc-950 px-4 py-3 text-white placeholder:text-zinc-500 focus:border-red-500 outline-none"
               />
               <p className="mt-2 text-xs text-zinc-500">
-                Only provide your email if you&apos;d like us to contact you
-                about your contribution.
+                {t.emailNote}
               </p>
             </div>
 
-            {/* Honeypot anti-spam field */}
             <div
               aria-hidden="true"
               className="absolute -left-[9999px]"
@@ -262,12 +328,9 @@ export default function ContributePage() {
                 onExpire={() => setTurnstileToken("")}
                 onError={() => {
                   setTurnstileToken("");
-                  setError("Security verification failed. Please try again.");
+                  setError(t.security);
                 }}
-                options={{
-                  theme: "dark",
-                  size: "flexible",
-                }}
+                options={{ theme: "dark", size: "flexible" }}
               />
             </div>
 
@@ -282,12 +345,11 @@ export default function ContributePage() {
               disabled={loading || !turnstileToken}
               className="w-full rounded-full bg-red-600 py-4 text-lg font-semibold text-white hover:bg-red-500 transition disabled:opacity-50"
             >
-              {loading ? "Submitting..." : "Submit contribution →"}
+              {loading ? t.submitting : t.submit}
             </button>
 
             <p className="text-center text-xs text-zinc-500">
-              Every contribution is reviewed before any changes
-              are made to OneMatch.
+              {t.review}
             </p>
           </form>
         )}
@@ -297,5 +359,19 @@ export default function ContributePage() {
         </p>
       </div>
     </main>
+  );
+}
+
+export default function ContributePage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="min-h-screen bg-[#09090B] text-white flex items-center justify-center">
+          <p className="text-zinc-400">Loading...</p>
+        </main>
+      }
+    >
+      <ContributeForm />
+    </Suspense>
   );
 }
